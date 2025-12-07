@@ -1,6 +1,14 @@
 import { MapPin, Sparkles, Heart, Camera, UtensilsCrossed, Castle, TreePine } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
+// Import anime images
+import tokyoAnime from "@/assets/tokyo-shibuya-anime.png";
+import disneyAnime from "@/assets/disney-beauty-beast-anime.png";
+import kyotoAnime from "@/assets/kyoto-torii-anime.png";
+import naraAnime from "@/assets/nara-deer-anime.png";
+import osakaAnime from "@/assets/osaka-dotonbori-anime.png";
+import ramenAnime from "@/assets/japan-ramen-anime.png";
+
 interface DayPlan {
   day: number;
   date: string;
@@ -10,153 +18,163 @@ interface DayPlan {
   accommodation: string;
   icon: React.ReactNode;
   mood: string;
+  image?: string;
 }
 
 const itinerary: DayPlan[] = [
   {
     day: 1,
-    date: "Day 1",
-    location: "Tokyo",
-    title: "Arrival & Shibuya",
+    date: "יום 1",
+    location: "טוקיו",
+    title: "הגעה ושיבויה",
     highlights: [
-      "Arrive at Narita/Haneda Airport",
-      "Check into Tokyo hotel (Shibuya area)",
-      "Explore Shibuya Crossing & Hachiko Statue",
-      "Evening walk in Harajuku",
-      "Dinner in Omotesando",
+      "נחיתה בשדה התעופה נריטה/הנדה",
+      "צ'ק-אין במלון בטוקיו (אזור שיבויה)",
+      "מעבר החציה בשיבויה ופסל האצ'יקו",
+      "טיול ערב בהרג'וקו",
+      "ארוחת ערב באומוטסנדו",
     ],
-    accommodation: "Tokyo Hotel - Shibuya",
+    accommodation: "מלון טוקיו - שיבויה",
     icon: <Sparkles className="w-5 h-5" />,
-    mood: "Excitement",
+    mood: "התרגשות",
+    image: tokyoAnime,
   },
   {
     day: 2,
-    date: "Day 2",
-    location: "Tokyo",
-    title: "Traditional Tokyo",
+    date: "יום 2",
+    location: "טוקיו",
+    title: "טוקיו המסורתית",
     highlights: [
-      "Morning at Senso-ji Temple (Asakusa)",
-      "Explore Nakamise Shopping Street",
-      "Lunch at traditional ramen shop",
-      "Afternoon in Akihabara",
-      "Evening TeamLab or Tokyo Skytree",
+      "בוקר במקדש סנסו-ג'י (אסאקוסה)",
+      "רחוב הקניות נאקאמיסה",
+      "צהריים במסעדת ראמן מסורתית",
+      "אחה״צ באקיהברה",
+      "ערב בטיםלאב או טוקיו סקייטרי",
     ],
-    accommodation: "Tokyo Hotel - Shibuya",
+    accommodation: "מלון טוקיו - שיבויה",
     icon: <TreePine className="w-5 h-5" />,
-    mood: "Cultural",
+    mood: "תרבות",
+    image: tokyoAnime,
   },
   {
     day: 3,
-    date: "Day 3-4",
-    location: "Tokyo Disney",
-    title: "Disney Magic ✨",
+    date: "יום 3-4",
+    location: "דיסני טוקיו",
+    title: "✨ קסם דיסני",
     highlights: [
-      "Check into Tokyo Disneyland Hotel",
-      "Stay in Beauty and the Beast Room!",
-      "Full day at Tokyo Disneyland",
-      "Enchanted Tale of Beauty & the Beast ride",
-      "Night parade & fireworks",
+      "צ'ק-אין במלון דיסנילנד טוקיו",
+      "לינה בחדר היפה והחיה!",
+      "יום מלא בדיסנילנד טוקיו",
+      "אטרקציית היפה והחיה",
+      "מצעד לילי וזיקוקים",
     ],
-    accommodation: "Tokyo Disneyland Hotel - Beauty & Beast Room",
+    accommodation: "מלון דיסנילנד טוקיו - חדר היפה והחיה",
     icon: <Castle className="w-5 h-5" />,
-    mood: "Magical",
+    mood: "קסום",
+    image: disneyAnime,
   },
   {
     day: 4,
-    date: "Day 4",
-    location: "Tokyo Disney",
-    title: "DisneySea Adventure",
+    date: "יום 4",
+    location: "דיסני טוקיו",
+    title: "הרפתקה בדיסני-סי",
     highlights: [
-      "Morning: Enjoy hotel breakfast & amenities",
-      "Full day at Tokyo DisneySea",
-      "Journey to the Center of the Earth",
-      "Mediterranean Harbor at sunset",
-      "Romantic dinner at the park",
+      "בוקר: ארוחת בוקר במלון והנאה מהמתקנים",
+      "יום מלא בטוקיו דיסני-סי",
+      "מסע אל מרכז כדור הארץ",
+      "נמל הים התיכון בשקיעה",
+      "ארוחת ערב רומנטית בפארק",
     ],
-    accommodation: "Tokyo Disneyland Hotel - Beauty & Beast Room",
+    accommodation: "מלון דיסנילנד טוקיו - חדר היפה והחיה",
     icon: <Heart className="w-5 h-5" />,
-    mood: "Romance",
+    mood: "רומנטיקה",
+    image: disneyAnime,
   },
   {
     day: 5,
-    date: "Day 5",
-    location: "Kyoto",
-    title: "Shinkansen to Kyoto",
+    date: "יום 5",
+    location: "קיוטו",
+    title: "שינקנסן לקיוטו",
     highlights: [
-      "Morning: Travel to Kyoto via Shinkansen",
-      "Check into traditional Ryokan",
-      "Afternoon: Fushimi Inari Shrine (10,000 torii gates)",
-      "Evening: Gion district walk",
-      "Possible Geisha spotting",
+      "בוקר: נסיעה לקיוטו ברכבת המהירה",
+      "צ'ק-אין בריוקאן מסורתי",
+      "אחה״צ: מקדש פושימי אינארי (10,000 שערי טורי)",
+      "ערב: טיול ברובע גיון",
+      "אולי נראה גיישות",
     ],
-    accommodation: "Traditional Kyoto Ryokan",
+    accommodation: "ריוקאן מסורתי בקיוטו",
     icon: <Camera className="w-5 h-5" />,
-    mood: "Traditional",
+    mood: "מסורתי",
+    image: kyotoAnime,
   },
   {
     day: 6,
-    date: "Day 6",
-    location: "Kyoto",
-    title: "Temples & Gardens",
+    date: "יום 6",
+    location: "קיוטו",
+    title: "מקדשים וגנים",
     highlights: [
-      "Morning: Kinkaku-ji (Golden Pavilion)",
-      "Bamboo Grove in Arashiyama",
-      "Lunch: Kyoto-style kaiseki",
-      "Afternoon: Nijo Castle",
-      "Evening: Private onsen experience",
+      "בוקר: קינקקו-ג'י (הביתן הזהוב)",
+      "יער הבמבוק בארשיאמה",
+      "צהריים: קייסקי בסגנון קיוטו",
+      "אחה״צ: טירת ניג'ו",
+      "ערב: חווית אונסן פרטית",
     ],
-    accommodation: "Traditional Kyoto Ryokan",
+    accommodation: "ריוקאן מסורתי בקיוטו",
     icon: <TreePine className="w-5 h-5" />,
-    mood: "Peaceful",
+    mood: "שלווה",
+    image: kyotoAnime,
   },
   {
     day: 7,
-    date: "Day 7",
-    location: "Nara & Osaka",
-    title: "Day Trip & Osaka",
+    date: "יום 7",
+    location: "נארה ואוסקה",
+    title: "טיול יום ואוסקה",
     highlights: [
-      "Morning: Day trip to Nara",
-      "Feed the sacred deer at Nara Park",
-      "Visit Todai-ji Temple",
-      "Afternoon: Travel to Osaka",
-      "Evening: Dotonbori nightlife",
+      "בוקר: טיול יום לנארה",
+      "האכלת האיילים הקדושים בפארק נארה",
+      "ביקור במקדש טודאי-ג'י",
+      "אחה״צ: נסיעה לאוסקה",
+      "ערב: חיי הלילה של דוטונבורי",
     ],
-    accommodation: "Osaka Hotel",
+    accommodation: "מלון אוסקה",
     icon: <Sparkles className="w-5 h-5" />,
-    mood: "Adventure",
+    mood: "הרפתקה",
+    image: naraAnime,
   },
   {
     day: 8,
-    date: "Day 8",
-    location: "Osaka",
-    title: "Osaka Food Tour",
+    date: "יום 8",
+    location: "אוסקה",
+    title: "סיור אוכל באוסקה",
     highlights: [
-      "Morning: Osaka Castle",
-      "Kuromon Market food exploration",
-      "Best takoyaki & okonomiyaki",
-      "Afternoon: Shinsekai district",
-      "Last shopping in Shinsaibashi",
-      "Farewell dinner at high-end izakaya",
+      "בוקר: טירת אוסקה",
+      "שוק קורומון - חקירת אוכל",
+      "הטאקויאקי והאוקונומיאקי הטובים ביותר",
+      "אחה״צ: רובע שינסקאי",
+      "קניות אחרונות בשינסאיבאשי",
+      "ארוחת פרידה באיזקאיה יוקרתית",
     ],
-    accommodation: "Osaka Hotel",
+    accommodation: "מלון אוסקה",
     icon: <UtensilsCrossed className="w-5 h-5" />,
-    mood: "Foodie",
+    mood: "אוכל",
+    image: osakaAnime,
   },
   {
     day: 9,
-    date: "Day 9",
-    location: "Departure",
-    title: "Sayonara Japan",
+    date: "יום 9",
+    location: "יציאה",
+    title: "להתראות יפן",
     highlights: [
-      "Last morning in Osaka",
-      "Travel to Kansai International Airport",
-      "Last-minute airport shopping",
-      "Flight back to Dubai",
-      "Hearts full of memories ❤️",
+      "בוקר אחרון באוסקה",
+      "נסיעה לשדה התעופה קאנסאי",
+      "קניות אחרונות בשדה התעופה",
+      "טיסה חזרה לדובאי",
+      "לבבות מלאים בזכרונות ❤️",
     ],
-    accommodation: "Flight Home",
+    accommodation: "טיסה הביתה",
     icon: <Heart className="w-5 h-5" />,
-    mood: "Bittersweet",
+    mood: "מתוק-מר",
+    image: ramenAnime,
   },
 ];
 
@@ -167,15 +185,15 @@ const ItinerarySection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <MapPin className="w-6 h-6 text-primary" />
+            <MapPin className="w-6 h-6 text-primary animate-bounce" />
             <span className="text-primary font-display text-lg">旅程</span>
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
-            Your Journey
+            המסע שלכם
           </h2>
           <div className="section-divider mb-6" />
           <p className="text-muted-foreground max-w-xl mx-auto">
-            A carefully crafted 9-day adventure through Japan's most enchanting destinations
+            הרפתקה מתוכננת בקפידה של 9 ימים דרך היעדים הקסומים ביותר של יפן
           </p>
         </div>
 
@@ -193,46 +211,66 @@ const ItinerarySection = () => {
               }`}
             >
               {/* Timeline node */}
-              <div className="absolute left-4 md:left-1/2 w-8 h-8 -ml-4 rounded-full bg-background border-4 border-primary flex items-center justify-center z-10">
+              <div className="absolute left-4 md:left-1/2 w-8 h-8 -ml-4 rounded-full bg-background border-4 border-primary flex items-center justify-center z-10 transition-transform hover:scale-125">
                 <span className="text-xs font-bold text-primary">{day.day}</span>
               </div>
 
               {/* Card */}
               <Card
-                className={`card-elevated ml-12 md:ml-0 md:w-[calc(50%-2rem)] p-6 animate-fade-up ${
+                className={`card-elevated ml-12 md:ml-0 md:w-[calc(50%-2rem)] overflow-hidden animate-fade-up group ${
                   idx % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
                 }`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <p className="text-sm text-muted-foreground">{day.date}</p>
-                    <h3 className="font-display text-2xl text-foreground">{day.title}</h3>
-                    <p className="text-sm text-primary flex items-center gap-1 mt-1">
-                      <MapPin className="w-3 h-3" /> {day.location}
-                    </p>
+                {/* Day image */}
+                {day.image && (
+                  <div className="h-40 overflow-hidden relative">
+                    <img 
+                      src={day.image} 
+                      alt={day.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                    
+                    {/* Mood badge on image */}
+                    <span className="absolute top-3 right-3 text-xs px-3 py-1 rounded-full bg-sakura/80 backdrop-blur-sm text-primary font-medium">
+                      {day.mood}
+                    </span>
                   </div>
-                  <div className="p-2 rounded-lg bg-sakura/20 text-primary">
-                    {day.icon}
+                )}
+
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground">{day.date}</p>
+                      <h3 className="font-display text-2xl text-foreground">{day.title}</h3>
+                      <p className="text-sm text-primary flex items-center gap-1 mt-1">
+                        <MapPin className="w-3 h-3" /> {day.location}
+                      </p>
+                    </div>
+                    <div className="p-2 rounded-lg bg-sakura/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                      {day.icon}
+                    </div>
                   </div>
-                </div>
 
-                <ul className="space-y-2 mb-4">
-                  {day.highlights.map((highlight, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="text-gold mt-0.5">•</span>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="space-y-2 mb-4">
+                    {day.highlights.map((highlight, i) => (
+                      <li 
+                        key={i} 
+                        className="text-sm text-muted-foreground flex items-start gap-2 opacity-0 animate-fade-up"
+                        style={{ animationDelay: `${(idx * 100) + (i * 50)}ms`, animationFillMode: 'forwards' }}
+                      >
+                        <span className="text-gold mt-0.5">•</span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
 
-                <div className="pt-4 border-t border-border flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground">
-                    🏨 {day.accommodation}
-                  </span>
-                  <span className="text-xs px-2 py-1 rounded-full bg-sakura/20 text-primary">
-                    {day.mood}
-                  </span>
+                  <div className="pt-4 border-t border-border flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">
+                      🏨 {day.accommodation}
+                    </span>
+                  </div>
                 </div>
               </Card>
             </div>

@@ -7,7 +7,7 @@ const Footer = () => {
         {/* Japanese pattern */}
         <div className="flex items-center justify-center gap-4 mb-6">
           <div className="w-12 h-px bg-gradient-to-r from-transparent via-sakura to-transparent" />
-          <span className="text-sakura text-xl">愛</span>
+          <span className="text-sakura text-xl animate-pulse">愛</span>
           <div className="w-12 h-px bg-gradient-to-r from-transparent via-sakura to-transparent" />
         </div>
 
@@ -15,18 +15,18 @@ const Footer = () => {
           Amit & Jonathan
         </h3>
         <p className="text-sm text-background/60 mb-4 font-display italic">
-          Japan Honeymoon 2025/2026
+          ירח דבש ביפן 2025/2026
         </p>
 
         <div className="flex items-center justify-center gap-2 text-sakura">
-          <Heart className="w-4 h-4 fill-current" />
-          <span className="text-sm">Made with love for our adventure</span>
-          <Heart className="w-4 h-4 fill-current" />
+          <Heart className="w-4 h-4 fill-current animate-pulse" />
+          <span className="text-sm">נוצר באהבה להרפתקה שלנו</span>
+          <Heart className="w-4 h-4 fill-current animate-pulse" />
         </div>
 
         <p className="mt-8 text-xs text-background/40">
-          All prices are estimates and subject to change. 
-          Book early for the best experience!
+          כל המחירים הם הערכות וכפופים לשינויים. 
+          הזמינו מוקדם לחוויה הטובה ביותר!
         </p>
       </div>
     </footer>
