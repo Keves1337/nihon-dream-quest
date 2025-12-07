@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Plane } from "lucide-react";
 
 interface FlightAnimationProps {
   onComplete: () => void;
@@ -28,6 +29,57 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
           background: "radial-gradient(ellipse at 50% 80%, rgba(255, 200, 150, 0.4) 0%, transparent 60%)",
         }}
       />
+
+      {/* Flight path from Israel to Japan */}
+      <div className="absolute top-8 left-0 right-0 h-32 z-30">
+        <svg
+          viewBox="0 0 800 120"
+          className="w-full h-full"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <linearGradient id="flightPathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#FFD700" />
+              <stop offset="50%" stopColor="#FFB7C5" />
+              <stop offset="100%" stopColor="#FF6B8A" />
+            </linearGradient>
+          </defs>
+          
+          {/* Flight path curve */}
+          <path
+            d="M 100 80 Q 400 20 700 80"
+            stroke="url(#flightPathGradient)"
+            strokeWidth="3"
+            strokeDasharray="10 5"
+            fill="none"
+            opacity="0.8"
+          />
+          
+          {/* Israel marker */}
+          <circle cx="100" cy="80" r="8" fill="#FFD700" className="animate-pulse" />
+          <text x="100" y="105" textAnchor="middle" fill="#FFF0F3" fontSize="14" fontFamily="serif" style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}>
+            Israel 🇮🇱
+          </text>
+          
+          {/* Japan marker */}
+          <circle cx="700" cy="80" r="8" fill="#FF6B8A" className="animate-pulse" />
+          <text x="700" y="105" textAnchor="middle" fill="#FFF0F3" fontSize="14" fontFamily="serif" style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}>
+            Japan 🇯🇵
+          </text>
+          
+          {/* Animated plane */}
+          <g className="animate-plane-fly">
+            <Plane 
+              x="380" 
+              y="35" 
+              width="30" 
+              height="30" 
+              fill="#FFF0F3"
+              style={{ filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.3))" }}
+            />
+          </g>
+        </svg>
+      </div>
 
       {/* Distant mountains - back layer */}
       <svg
@@ -96,7 +148,7 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
         }`}
         style={{
           left: "50%",
-          top: "35%",
+          top: "30%",
           transform: "translateX(-50%)",
         }}
       >
@@ -131,7 +183,7 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
       <svg
         className="absolute bottom-0 left-1/2 -translate-x-1/2"
         width="600"
-        height="500"
+        height="450"
         viewBox="0 0 600 500"
         style={{ zIndex: 10 }}
       >
@@ -141,16 +193,6 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
             <stop offset="50%" stopColor="#5D4037" />
             <stop offset="100%" stopColor="#3D2817" />
           </linearGradient>
-          <radialGradient id="blossomPink" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FFB7C5" />
-            <stop offset="70%" stopColor="#FF8FA3" />
-            <stop offset="100%" stopColor="#FF6B8A" />
-          </radialGradient>
-          <radialGradient id="blossomLight" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FFF0F3" />
-            <stop offset="70%" stopColor="#FFCCD5" />
-            <stop offset="100%" stopColor="#FFB3C1" />
-          </radialGradient>
         </defs>
 
         {/* Tree trunk */}
@@ -179,13 +221,10 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
         {/* Smaller branches */}
         <path d="M150 230 Q100 200 60 180" stroke="url(#trunkGradient)" strokeWidth="8" fill="none" strokeLinecap="round" />
         <path d="M450 230 Q500 200 540 180" stroke="url(#trunkGradient)" strokeWidth="8" fill="none" strokeLinecap="round" />
-        <path d="M120 220 Q80 180 50 200" stroke="url(#trunkGradient)" strokeWidth="6" fill="none" strokeLinecap="round" />
-        <path d="M480 220 Q520 180 550 200" stroke="url(#trunkGradient)" strokeWidth="6" fill="none" strokeLinecap="round" />
       </svg>
 
-      {/* Blossom clusters - animated */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px]" style={{ zIndex: 11 }}>
-        {/* Large blossom clusters */}
+      {/* Blossom clusters */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[450px]" style={{ zIndex: 11 }}>
         {[
           { x: 80, y: 120, size: 80, delay: 0 },
           { x: 520, y: 120, size: 85, delay: 0.2 },
@@ -207,7 +246,7 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
             className="absolute animate-pulse"
             style={{
               left: cluster.x,
-              bottom: 500 - cluster.y,
+              bottom: 450 - cluster.y,
               width: cluster.size,
               height: cluster.size,
               background: i % 2 === 0 
@@ -220,30 +259,29 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
           />
         ))}
 
-        {/* Individual flower petals overlay */}
-        {[...Array(40)].map((_, i) => (
+        {/* Individual flower petals */}
+        {[...Array(30)].map((_, i) => (
           <div
             key={`petal-${i}`}
             className="absolute rounded-full"
             style={{
               left: 50 + Math.random() * 500,
-              bottom: 150 + Math.random() * 300,
+              bottom: 150 + Math.random() * 250,
               width: 8 + Math.random() * 12,
               height: 8 + Math.random() * 12,
               background: Math.random() > 0.5 ? "#FFB7C5" : "#FFF0F3",
               opacity: 0.8 + Math.random() * 0.2,
-              transform: `rotate(${Math.random() * 360}deg)`,
             }}
           />
         ))}
       </div>
 
-      {/* Falling petals animation */}
+      {/* Falling petals */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(25)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <div
             key={`falling-${i}`}
-            className="absolute animate-bounce"
+            className="absolute"
             style={{
               left: `${Math.random() * 100}%`,
               top: `-20px`,
@@ -259,18 +297,18 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
         ))}
       </div>
 
-      {/* Ground/grass silhouette */}
+      {/* Ground */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-20"
+        className="absolute bottom-0 left-0 right-0 h-16"
         style={{
           background: "linear-gradient(180deg, #1A1423 0%, #0D0A10 100%)",
         }}
       />
 
-      {/* Title text */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 text-center z-20">
+      {/* Title */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-center z-20">
         <h1 
-          className="font-display text-5xl md:text-7xl mb-3"
+          className="font-display text-4xl md:text-6xl mb-2"
           style={{
             color: "#FFF0F3",
             textShadow: "2px 2px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 183, 197, 0.5)",
@@ -279,7 +317,7 @@ const FlightAnimation = ({ onComplete }: FlightAnimationProps) => {
           Amit & Jonathan
         </h1>
         <p 
-          className="text-xl md:text-2xl font-display italic"
+          className="text-lg md:text-xl font-display italic"
           style={{
             color: "#FFCCD5",
             textShadow: "1px 1px 10px rgba(0, 0, 0, 0.5)",
