@@ -79,24 +79,14 @@ const BudgetSummary = () => {
 
   return (
     <section id="budget" className="py-20 px-6 bg-muted/30 relative overflow-hidden">
-      {/* Floating decorative elements */}
-      <div className="absolute top-20 left-10 text-4xl animate-float opacity-20">🌸</div>
-      <div className="absolute top-40 right-20 text-3xl animate-float animation-delay-500 opacity-20">🎋</div>
-      <div className="absolute bottom-32 left-1/4 text-2xl animate-float animation-delay-1000 opacity-20">🏯</div>
-      <div className="absolute bottom-20 right-10 text-3xl animate-float animation-delay-700 opacity-20">⛩️</div>
-      
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Sparkles className="w-6 h-6 text-gold animate-pulse" />
-            <span className="text-gold font-display text-lg">予算</span>
-            <Sparkles className="w-6 h-6 text-gold animate-pulse" />
-          </div>
+          <span className="text-gold/60 font-display text-sm tracking-widest uppercase mb-2 block">予算</span>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
             {t("Trip Budget", "תקציב הטיול")}
           </h2>
-          <div className="section-divider mb-6" />
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
           <p className="text-muted-foreground max-w-xl mx-auto">
             {t("Estimated expenses during the trip • Excluding flights and accommodation", "הוצאות משוערות במהלך הטיול • ללא טיסות ולינה")}
           </p>

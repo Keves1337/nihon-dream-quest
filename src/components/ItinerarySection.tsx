@@ -342,22 +342,14 @@ const ItinerarySection = () => {
 
   return (
     <section id="itinerary" className="py-20 px-6 relative overflow-hidden">
-      {/* Floating decorations */}
-      <div className="absolute top-10 right-10 text-4xl animate-float opacity-20">🌸</div>
-      <div className="absolute top-1/3 left-5 text-3xl animate-float animation-delay-700 opacity-20">🎐</div>
-      <div className="absolute bottom-20 right-20 text-3xl animate-float animation-delay-1000 opacity-20">🏯</div>
-      
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <MapPin className="w-6 h-6 text-primary animate-bounce" />
-            <span className="text-primary font-display text-lg">旅程</span>
-          </div>
+          <span className="text-primary/60 font-display text-sm tracking-widest uppercase mb-2 block">旅程</span>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
             {t("Your Journey", "המסע שלכם")}
           </h2>
-          <div className="section-divider mb-6" />
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6" />
           <p className="text-muted-foreground max-w-xl mx-auto">
             {t("February 11-20, 2026 • 10 magical days in Japan", "11-20 בפברואר 2026 • 10 ימים קסומים ביפן")}
           </p>
