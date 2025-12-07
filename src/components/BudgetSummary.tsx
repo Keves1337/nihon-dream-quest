@@ -23,9 +23,9 @@ const budgetData: BudgetItem[] = [
     emoji: "🚄",
     image: shinkansenAnime,
     items: [
-      { nameEn: "7-Day JR Pass", nameHe: "JR Pass ל-7 ימים", cost: 2400, notesEn: "2 tickets × ¥50,000", notesHe: "2 כרטיסים × ¥50,000" },
-      { nameEn: "Tokyo Metro & Local Transport", nameHe: "מטרו טוקיו ותחבורה מקומית", cost: 400, notesEn: "IC cards, buses", notesHe: "כרטיסי IC, אוטובוסים" },
-      { nameEn: "Airport Transfers", nameHe: "העברות משדה התעופה", cost: 300, notesEn: "Narita Express", notesHe: "Narita Express" },
+      { nameEn: "7-Day JR Pass", nameHe: "JR Pass ל-7 ימים", cost: 1800 },
+      { nameEn: "Tokyo Metro & Local Transport", nameHe: "מטרו טוקיו ותחבורה מקומית", cost: 250 },
+      { nameEn: "Airport Transfers", nameHe: "העברות משדה התעופה", cost: 200 },
     ],
   },
   {
@@ -35,8 +35,8 @@ const budgetData: BudgetItem[] = [
     emoji: "🍜",
     image: ramenAnime,
     items: [
-      { nameEn: "Daily Meals", nameHe: "ארוחות יומיות", cost: 4000, notesEn: "~₪400/day × 10 days", notesHe: "כ-₪400 ליום × 10 ימים" },
-      { nameEn: "Special Dining Experiences", nameHe: "חוויות קולינריות מיוחדות", cost: 800, notesEn: "Valentine's dinner, izakaya", notesHe: "ארוחת ולנטיינז, איזקאיה" },
+      { nameEn: "Daily Meals", nameHe: "ארוחות יומיות", cost: 2500 },
+      { nameEn: "Special Dining Experiences", nameHe: "חוויות קולינריות מיוחדות", cost: 500 },
     ],
   },
   {
@@ -46,11 +46,11 @@ const budgetData: BudgetItem[] = [
     emoji: "🎢",
     image: kyotoAnime,
     items: [
-      { nameEn: "Tokyo Disneyland (1 day)", nameHe: "דיסנילנד טוקיו (יום אחד)", cost: 700, notesEn: "2 tickets", notesHe: "2 כרטיסים" },
-      { nameEn: "Tokyo DisneySea (1 day)", nameHe: "דיסני-סי טוקיו (יום אחד)", cost: 700, notesEn: "2 tickets", notesHe: "2 כרטיסים" },
-      { nameEn: "Kyoto Temples", nameHe: "מקדשים בקיוטו", cost: 200, notesEn: "Fushimi Inari, Kinkaku-ji & more", notesHe: "פושימי אינארי, קינקקו-ג׳י ועוד" },
-      { nameEn: "Osaka Castle & More", nameHe: "טירת אוסקה ואטרקציות נוספות", cost: 200, notesEn: "Various entry fees", notesHe: "דמי כניסה שונים" },
-      { nameEn: "Onsen Experience", nameHe: "חוויית אונסן", cost: 400, notesEn: "Ryokan onsen", notesHe: "אונסן בריוקאן" },
+      { nameEn: "Tokyo Disneyland (1 day)", nameHe: "דיסנילנד טוקיו (יום אחד)", cost: 550 },
+      { nameEn: "Tokyo DisneySea (1 day)", nameHe: "דיסני-סי טוקיו (יום אחד)", cost: 550 },
+      { nameEn: "Kyoto Temples", nameHe: "מקדשים בקיוטו", cost: 100 },
+      { nameEn: "Osaka Castle & More", nameHe: "טירת אוסקה ואטרקציות נוספות", cost: 100 },
+      { nameEn: "Onsen Experience", nameHe: "חוויית אונסן", cost: 250 },
     ],
   },
   {
@@ -60,8 +60,8 @@ const budgetData: BudgetItem[] = [
     emoji: "🛍️",
     image: osakaAnime,
     items: [
-      { nameEn: "Souvenirs & Gifts", nameHe: "מזכרות ומתנות", cost: 1500, notesEn: "Estimate", notesHe: "הערכה" },
-      { nameEn: "Miscellaneous", nameHe: "הוצאות שונות", cost: 500, notesEn: "Emergency & extras", notesHe: "חירום ותוספות" },
+      { nameEn: "Souvenirs & Gifts", nameHe: "מזכרות ומתנות", cost: 1000 },
+      { nameEn: "Miscellaneous", nameHe: "הוצאות שונות", cost: 300 },
     ],
   },
 ];
@@ -185,14 +185,6 @@ const BudgetSummary = () => {
             </div>
           </div>
 
-          <div className="mt-4 md:mt-6 p-3 md:p-4 rounded-lg bg-gold/10 border border-gold/20">
-            <p className="text-xs md:text-sm text-center text-muted-foreground">
-              💡 <strong>{t("Note:", "שימו לב:")}</strong> {t(
-                "This budget excludes flights and accommodation. Prices are estimates and may vary.",
-                "תקציב זה אינו כולל טיסות ולינה. מחירים משוערים ועשויים להשתנות."
-              )}
-            </p>
-          </div>
         </Card>
       </div>
     </section>
