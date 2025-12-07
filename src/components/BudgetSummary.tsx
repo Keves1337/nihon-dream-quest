@@ -78,22 +78,22 @@ const BudgetSummary = () => {
   );
 
   return (
-    <section id="budget" className="py-20 px-6 bg-muted/30 relative overflow-hidden">
+    <section id="budget" className="py-12 md:py-20 px-4 md:px-6 bg-muted/30 relative overflow-hidden">
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-gold/60 font-display text-sm tracking-widest uppercase mb-2 block">予算</span>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <span className="text-gold/60 font-display text-xs md:text-sm tracking-widest uppercase mb-2 block">予算</span>
+          <h2 className="font-display text-3xl md:text-5xl text-foreground mb-3 md:mb-4">
             {t("Trip Budget", "תקציב הטיול")}
           </h2>
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4 md:mb-6" />
+          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto px-2">
             {t("Estimated expenses during the trip • Excluding flights and accommodation", "הוצאות משוערות במהלך הטיול • ללא טיסות ולינה")}
           </p>
         </div>
 
         {/* Budget Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
           {budgetData.map((category, idx) => (
             <Card
               key={t(category.categoryEn, category.categoryHe)}
@@ -107,57 +107,50 @@ const BudgetSummary = () => {
               
               {/* Category image */}
               {category.image && (
-                <div className="h-36 overflow-hidden relative">
+                <div className="h-28 md:h-36 overflow-hidden relative">
                   <img 
                     src={category.image} 
                     alt={t(category.categoryEn, category.categoryHe)}
                     className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                  
-                  {/* Sparkle overlay on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute top-4 left-4 text-gold animate-pulse">✨</div>
-                    <div className="absolute top-8 right-12 text-sakura animate-pulse animation-delay-200">✨</div>
-                    <div className="absolute bottom-12 left-8 text-gold animate-pulse animation-delay-500">✨</div>
-                  </div>
                 </div>
               )}
               
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:bg-sakura/20">
+              <div className="p-4 md:p-6">
+                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                  <div className="p-1.5 md:p-2 rounded-lg bg-primary/10 text-primary transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:bg-sakura/20">
                     {category.icon}
                   </div>
-                  <h3 className="font-display text-xl text-foreground">
+                  <h3 className="font-display text-lg md:text-xl text-foreground">
                     {t(category.categoryEn, category.categoryHe)}
                   </h3>
                 </div>
 
-                <div className="space-y-3 mb-4">
+                <div className="space-y-2 md:space-y-3 mb-3 md:mb-4">
                   {category.items.map((item, i) => (
                     <div 
                       key={i} 
-                      className="flex justify-between items-start opacity-0 animate-fade-up hover:bg-sakura/5 p-2 -mx-2 rounded-lg transition-colors duration-300"
+                      className="flex justify-between items-start opacity-0 animate-fade-up hover:bg-sakura/5 p-1.5 md:p-2 -mx-1.5 md:-mx-2 rounded-lg transition-colors duration-300"
                       style={{ animationDelay: `${(idx * 150) + (i * 75)}ms`, animationFillMode: 'forwards' }}
                     >
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-foreground">{t(item.nameEn, item.nameHe)}</p>
+                        <p className="text-xs md:text-sm font-medium text-foreground">{t(item.nameEn, item.nameHe)}</p>
                         {(item.notesEn || item.notesHe) && (
                           <p className="text-xs text-muted-foreground">{t(item.notesEn || "", item.notesHe || "")}</p>
                         )}
                       </div>
-                      <span className="text-sm font-semibold text-primary ml-2 tabular-nums">
+                      <span className="text-xs md:text-sm font-semibold text-primary ml-2 tabular-nums">
                         ₪{item.cost.toLocaleString()}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="pt-4 border-t border-border group-hover:border-sakura/30 transition-colors duration-300">
+                <div className="pt-3 md:pt-4 border-t border-border group-hover:border-sakura/30 transition-colors duration-300">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">{t("Category Total", "סה״כ קטגוריה")}</span>
-                    <span className="font-display text-xl text-primary group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-xs md:text-sm text-muted-foreground">{t("Category Total", "סה״כ קטגוריה")}</span>
+                    <span className="font-display text-lg md:text-xl text-primary group-hover:scale-110 transition-transform duration-300">
                       ₪{calculateCategoryTotal(category.items).toLocaleString()}
                     </span>
                   </div>
@@ -168,42 +161,32 @@ const BudgetSummary = () => {
         </div>
 
         {/* Grand Total */}
-        <Card className="card-elevated max-w-xl mx-auto p-8 bg-gradient-to-br from-primary/5 via-sakura/10 to-gold/5 relative overflow-hidden group">
-          {/* Animated decorations */}
-          <div className="absolute top-2 right-2 text-2xl animate-sway">🌸</div>
-          <div className="absolute bottom-2 left-2 text-2xl animate-sway animation-delay-500">🎌</div>
-          <div className="absolute top-1/2 right-4 text-gold/20 animate-pulse">
-            <Sparkles className="w-8 h-8" />
-          </div>
-          <div className="absolute top-1/2 left-4 text-sakura/20 animate-pulse animation-delay-700">
-            <Sparkles className="w-6 h-6" />
-          </div>
-          
+        <Card className="card-elevated max-w-xl mx-auto p-6 md:p-8 bg-gradient-to-br from-primary/5 via-sakura/10 to-gold/5 relative overflow-hidden group">
           <div className="text-center relative z-10">
-            <p className="text-muted-foreground mb-2 text-lg">{t("Total Trip Expenses", "סה״כ הוצאות בטיול")}</p>
-            <p className="font-display text-5xl md:text-6xl text-primary mb-3 animate-scale-in group-hover:scale-105 transition-transform duration-300">
+            <p className="text-muted-foreground mb-2 text-base md:text-lg">{t("Total Trip Expenses", "סה״כ הוצאות בטיול")}</p>
+            <p className="font-display text-4xl md:text-6xl text-primary mb-3 animate-scale-in group-hover:scale-105 transition-transform duration-300">
               ₪{grandTotal.toLocaleString()}
             </p>
-            <div className="flex justify-center gap-4 text-sm text-muted-foreground">
+            <div className="flex justify-center gap-2 md:gap-4 text-xs md:text-sm text-muted-foreground">
               <span>≈ ${Math.round(grandTotal / 3.7).toLocaleString()}</span>
               <span>•</span>
               <span>≈ ¥{Math.round(grandTotal * 40.5).toLocaleString()}</span>
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-border/50 grid grid-cols-2 gap-4 text-center">
-            <div className="p-3 rounded-lg bg-background/50 hover:bg-sakura/10 transition-colors duration-300">
-              <p className="text-xl font-display text-primary">₪{Math.round(grandTotal / 10).toLocaleString()}</p>
+          <div className="mt-4 md:mt-6 pt-4 border-t border-border/50 grid grid-cols-2 gap-3 md:gap-4 text-center">
+            <div className="p-2 md:p-3 rounded-lg bg-background/50 hover:bg-sakura/10 transition-colors duration-300">
+              <p className="text-lg md:text-xl font-display text-primary">₪{Math.round(grandTotal / 10).toLocaleString()}</p>
               <p className="text-xs text-muted-foreground">{t("Average per day", "ממוצע ליום")}</p>
             </div>
-            <div className="p-3 rounded-lg bg-background/50 hover:bg-sakura/10 transition-colors duration-300">
-              <p className="text-xl font-display text-primary">₪{Math.round(grandTotal / 2).toLocaleString()}</p>
+            <div className="p-2 md:p-3 rounded-lg bg-background/50 hover:bg-sakura/10 transition-colors duration-300">
+              <p className="text-lg md:text-xl font-display text-primary">₪{Math.round(grandTotal / 2).toLocaleString()}</p>
               <p className="text-xs text-muted-foreground">{t("Per person", "לכל אחד")}</p>
             </div>
           </div>
 
-          <div className="mt-6 p-4 rounded-lg bg-gold/10 border border-gold/20">
-            <p className="text-sm text-center text-muted-foreground">
+          <div className="mt-4 md:mt-6 p-3 md:p-4 rounded-lg bg-gold/10 border border-gold/20">
+            <p className="text-xs md:text-sm text-center text-muted-foreground">
               💡 <strong>{t("Note:", "שימו לב:")}</strong> {t(
                 "This budget excludes flights and accommodation. Prices are estimates and may vary.",
                 "תקציב זה אינו כולל טיסות ולינה. מחירים משוערים ועשויים להשתנות."

@@ -341,16 +341,16 @@ const ItinerarySection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="itinerary" className="py-20 px-6 relative overflow-hidden">
+    <section id="itinerary" className="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden">
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-primary/60 font-display text-sm tracking-widest uppercase mb-2 block">旅程</span>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <span className="text-primary/60 font-display text-xs md:text-sm tracking-widest uppercase mb-2 block">旅程</span>
+          <h2 className="font-display text-3xl md:text-5xl text-foreground mb-3 md:mb-4">
             {t("Your Journey", "המסע שלכם")}
           </h2>
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6" />
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-4 md:mb-6" />
+          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto px-2">
             {t("February 11-20, 2026 • 10 magical days in Japan", "11-20 בפברואר 2026 • 10 ימים קסומים ביפן")}
           </p>
         </div>
@@ -369,20 +369,20 @@ const ItinerarySection = () => {
               }`}
             >
               {/* Timeline node */}
-              <div className="absolute left-4 md:left-1/2 w-10 h-10 -ml-5 rounded-full bg-background border-4 border-primary flex items-center justify-center z-10 transition-all duration-300 hover:scale-125 hover:border-sakura group">
-                <span className="text-sm group-hover:hidden">{day.day}</span>
-                <span className="text-lg hidden group-hover:block">{day.emoji}</span>
+              <div className="absolute left-4 md:left-1/2 w-8 h-8 md:w-10 md:h-10 -ml-4 md:-ml-5 rounded-full bg-background border-3 md:border-4 border-primary flex items-center justify-center z-10 transition-all duration-300 hover:scale-125 hover:border-sakura group">
+                <span className="text-xs md:text-sm group-hover:hidden">{day.day}</span>
+                <span className="text-sm md:text-lg hidden group-hover:block">{day.emoji}</span>
               </div>
 
               {/* Card */}
               <Card
-                className={`card-elevated ml-14 md:ml-0 md:w-[calc(50%-2.5rem)] overflow-hidden animate-fade-up group ${
+                className={`card-elevated ml-10 md:ml-0 md:w-[calc(50%-2.5rem)] overflow-hidden animate-fade-up group ${
                   idx % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
                 }`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 {/* Day image */}
-                <div className="h-40 overflow-hidden relative">
+                <div className="h-32 md:h-40 overflow-hidden relative">
                   <img 
                     src={day.image} 
                     alt={t(day.titleEn, day.titleHe)}
@@ -390,35 +390,24 @@ const ItinerarySection = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
                   
-                  {/* Floating emoji on hover */}
-                  <div className="absolute top-3 left-3 text-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125 group-hover:rotate-12">
-                    {day.emoji}
-                  </div>
-                  
                   {/* Mood badge on image */}
-                  <span className="absolute top-3 right-3 text-xs px-3 py-1 rounded-full bg-sakura/80 backdrop-blur-sm text-primary font-medium transition-all duration-300 group-hover:bg-gold/80">
+                  <span className="absolute top-2 right-2 md:top-3 md:right-3 text-xs px-2 py-0.5 md:px-3 md:py-1 rounded-full bg-sakura/80 backdrop-blur-sm text-primary font-medium transition-all duration-300 group-hover:bg-gold/80">
                     {t(day.moodEn, day.moodHe)}
                   </span>
-                  
-                  {/* Sparkle effects */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute top-8 right-16 text-gold animate-pulse">✨</div>
-                    <div className="absolute bottom-16 left-8 text-sakura animate-pulse animation-delay-300">✨</div>
-                  </div>
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+                <div className="p-4 md:p-6">
+                  <div className="flex items-start justify-between mb-3 md:mb-4">
                     <div>
                       <p className="text-xs text-gold font-medium">{t(day.fullDateEn, day.fullDateHe)}</p>
-                      <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300">
+                      <h3 className="font-display text-lg md:text-xl text-foreground group-hover:text-primary transition-colors duration-300">
                         {t(day.titleEn, day.titleHe)}
                       </h3>
-                      <p className="text-sm text-primary flex items-center gap-1 mt-1">
+                      <p className="text-xs md:text-sm text-primary flex items-center gap-1 mt-1">
                         <MapPin className="w-3 h-3" /> {t(day.locationEn, day.locationHe)}
                       </p>
                     </div>
-                    <div className="p-2 rounded-lg bg-sakura/20 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:bg-gold/20">
+                    <div className="p-1.5 md:p-2 rounded-lg bg-sakura/20 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:bg-gold/20">
                       {day.icon}
                     </div>
                   </div>
