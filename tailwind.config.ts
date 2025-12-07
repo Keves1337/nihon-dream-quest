@@ -76,9 +76,10 @@ export default {
         ocean: "hsl(var(--ocean))",
       },
       fontFamily: {
-        sans: ['Noto Sans JP', 'sans-serif'],
-        serif: ['Noto Serif JP', 'serif'],
-        display: ['Playfair Display', 'Noto Serif JP', 'serif'],
+        sans: ['Montserrat', 'Noto Sans JP', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Noto Serif JP', 'serif'],
+        display: ['Cormorant Garamond', 'Noto Serif JP', 'serif'],
+        body: ['Montserrat', 'Noto Sans JP', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
