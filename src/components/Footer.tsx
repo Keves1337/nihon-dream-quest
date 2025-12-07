@@ -23,12 +23,6 @@ const Footer = () => {
           <Heart className="w-3 h-3 md:w-4 md:h-4 fill-current" />
         </div>
 
-        <p className="text-xs text-background/40 mb-4 md:mb-6 px-2">
-          {t(
-            "All prices are estimates and subject to change. Book early for the best experience!",
-            "כל המחירים הם הערכות וכפופים לשינויים. הזמינו מוקדם לחוויה הטובה ביותר!"
-          )}
-        </p>
 
         <div className="pt-4 md:pt-6 border-t border-background/10">
           <p className="text-xs text-background/50">
