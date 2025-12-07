@@ -2,7 +2,7 @@
 
 A beautiful trip planning site for Amit & Jonathan's honeymoon in Japan (February 2026).
 
-**Live Site**: https://keves1337.github.io/nihon-dream-quest/
+**GitHub Pages**: https://keves1337.github.io/nihon-dream-quest/
 
 ## How can I edit this code?
 
