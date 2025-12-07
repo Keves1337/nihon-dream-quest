@@ -1,7 +1,13 @@
-import { MapPin, Sparkles, Heart, Camera, UtensilsCrossed, Castle, TreePine } from "lucide-react";
+import { MapPin, Sparkles, Heart, Camera, UtensilsCrossed, Castle, TreePine, X } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   HoverCard,
   HoverCardContent,
@@ -334,35 +340,61 @@ const HighlightWithImage = ({
   dayIndex: number;
   t: (en: string, he: string) => string;
 }) => {
+  const isMobile = useIsMobile();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const content = (
+    <div className="relative">
+      <img 
+        src={highlight.image} 
+        alt={t(highlight.textEn, highlight.textHe)}
+        className="w-full h-48 md:h-40 object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+      <p className="absolute bottom-2 left-2 right-2 text-cream text-xs font-medium line-clamp-2">
+        {t(highlight.textEn, highlight.textHe)}
+      </p>
+    </div>
+  );
+
+  const listItem = (
+    <li 
+      className="text-sm text-muted-foreground flex items-start gap-2 opacity-0 animate-fade-up hover:text-foreground transition-colors duration-200 cursor-pointer"
+      style={{ animationDelay: `${(dayIndex * 100) + (index * 50)}ms`, animationFillMode: 'forwards' }}
+    >
+      <span className="text-gold mt-0.5 group-hover:animate-pulse">•</span>
+      <span className="hover:text-primary transition-colors border-b border-transparent hover:border-primary/30">
+        {t(highlight.textEn, highlight.textHe)}
+      </span>
+    </li>
+  );
+
+  // Use Dialog for mobile (tap to open)
+  if (isMobile) {
+    return (
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
+          {listItem}
+        </DialogTrigger>
+        <DialogContent className="p-0 overflow-hidden border-2 border-sakura/30 max-w-[90vw] w-72">
+          {content}
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  // Use HoverCard for desktop (hover to show)
   return (
     <HoverCard openDelay={100} closeDelay={100}>
       <HoverCardTrigger asChild>
-        <li 
-          className="text-sm text-muted-foreground flex items-start gap-2 opacity-0 animate-fade-up hover:text-foreground transition-colors duration-200 cursor-pointer"
-          style={{ animationDelay: `${(dayIndex * 100) + (index * 50)}ms`, animationFillMode: 'forwards' }}
-        >
-          <span className="text-gold mt-0.5 group-hover:animate-pulse">•</span>
-          <span className="hover:text-primary transition-colors border-b border-transparent hover:border-primary/30">
-            {t(highlight.textEn, highlight.textHe)}
-          </span>
-        </li>
+        {listItem}
       </HoverCardTrigger>
       <HoverCardContent 
         className="w-64 p-0 overflow-hidden border-2 border-sakura/30 shadow-xl"
         side="top"
         sideOffset={8}
       >
-        <div className="relative">
-          <img 
-            src={highlight.image} 
-            alt={t(highlight.textEn, highlight.textHe)}
-            className="w-full h-40 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-          <p className="absolute bottom-2 left-2 right-2 text-cream text-xs font-medium line-clamp-2">
-            {t(highlight.textEn, highlight.textHe)}
-          </p>
-        </div>
+        {content}
       </HoverCardContent>
     </HoverCard>
   );
