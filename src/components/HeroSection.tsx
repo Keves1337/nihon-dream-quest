@@ -36,24 +36,14 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Floating decorations */}
-      <div className="absolute top-20 left-10 text-4xl animate-float opacity-40">🌸</div>
-      <div className="absolute top-32 right-16 text-3xl animate-float animation-delay-500 opacity-40">⛩️</div>
-      <div className="absolute bottom-40 left-20 text-3xl animate-float animation-delay-1000 opacity-40">🎐</div>
-      <div className="absolute bottom-32 right-24 text-4xl animate-float animation-delay-700 opacity-40">🏯</div>
-      
       {/* Decorative circles with animation */}
       <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-sakura/20 blur-3xl animate-pulse" />
       <div className="absolute bottom-40 left-10 w-48 h-48 rounded-full bg-gold/10 blur-2xl animate-pulse animation-delay-1000" />
 
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
-        {/* Japanese pattern divider */}
-        <div className="flex items-center justify-center gap-4 mb-8 animate-fade-up">
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-          <span className="text-primary/60 text-2xl animate-sway">桜</span>
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        </div>
+        {/* Japanese character */}
+        <span className="text-primary/40 font-display text-sm tracking-widest uppercase mb-6 block animate-fade-up">桜</span>
 
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground mb-4 animate-fade-up animation-delay-100 drop-shadow-lg">
           Amit & Jonathan
