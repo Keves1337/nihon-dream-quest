@@ -57,33 +57,69 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Japanese color tokens
+        sakura: {
+          DEFAULT: "hsl(var(--sakura))",
+          deep: "hsl(var(--sakura-deep))",
+        },
+        torii: {
+          DEFAULT: "hsl(var(--torii))",
+          dark: "hsl(var(--torii-dark))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+        },
+        cream: "hsl(var(--cream))",
+        ink: "hsl(var(--ink))",
+        bamboo: "hsl(var(--bamboo))",
+        ocean: "hsl(var(--ocean))",
+      },
+      fontFamily: {
+        sans: ['Noto Sans JP', 'sans-serif'],
+        serif: ['Noto Serif JP', 'serif'],
+        display: ['Playfair Display', 'Noto Serif JP', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        'soft': 'var(--shadow-soft)',
+        'elevated': 'var(--shadow-elevated)',
+        'glow': 'var(--shadow-glow)',
+        'torii': '0 4px 20px hsl(0 75% 35% / 0.2)',
+        'sakura': '0 4px 30px hsl(350 80% 85% / 0.3)',
+      },
+      backgroundImage: {
+        'gradient-sakura': 'var(--gradient-sakura)',
+        'gradient-sunset': 'var(--gradient-sunset)',
+        'gradient-gold': 'var(--gradient-gold)',
+      },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "sway": {
+          "0%, 100%": { transform: "rotate(-2deg)" },
+          "50%": { transform: "rotate(2deg)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 3s ease-in-out infinite",
+        "sway": "sway 4s ease-in-out infinite",
       },
     },
   },
