@@ -1,8 +1,8 @@
-# Welcome to your Lovable project
+# Nihon Dream Quest - Japan Honeymoon Itinerary
 
-## Project info
+A beautiful trip planning site for Amit & Jonathan's honeymoon in Japan (February 2026).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Live Site**: https://keves1337.github.io/nihon-dream-quest/
 
 ## How can I edit this code?
 
