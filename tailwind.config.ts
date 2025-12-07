@@ -57,7 +57,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Japanese color tokens
         sakura: {
           DEFAULT: "hsl(var(--sakura))",
           deep: "hsl(var(--sakura-deep))",
@@ -76,10 +75,10 @@ export default {
         ocean: "hsl(var(--ocean))",
       },
       fontFamily: {
-        sans: ['Montserrat', 'Noto Sans JP', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Noto Serif JP', 'serif'],
-        display: ['Cormorant Garamond', 'Noto Serif JP', 'serif'],
-        body: ['Montserrat', 'Noto Sans JP', 'sans-serif'],
+        sans: ['Lato', 'Noto Sans JP', 'sans-serif'],
+        serif: ['Playfair Display', 'Noto Serif JP', 'serif'],
+        display: ['Playfair Display', 'Noto Serif JP', 'serif'],
+        body: ['Lato', 'Noto Sans JP', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

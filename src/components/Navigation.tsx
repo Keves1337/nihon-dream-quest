@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Plane, Map, DollarSign, Castle } from "lucide-react";
+import { Map, DollarSign } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,21 +42,24 @@ const Navigation = () => {
             className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             <Map className="w-4 h-4" />
-            Itinerary
+            {t("Itinerary", "מסלול")}
           </button>
           <button
             onClick={() => scrollTo("budget")}
             className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             <DollarSign className="w-4 h-4" />
-            Budget
+            {t("Budget", "תקציב")}
           </button>
         </div>
 
-        {/* Japanese text */}
-        <span className="text-sm text-muted-foreground font-japanese hidden sm:block">
-          日本へようこそ
-        </span>
+        {/* Language Toggle */}
+        <button
+          onClick={toggleLanguage}
+          className="px-3 py-1.5 text-sm font-medium rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
+        >
+          {language === "en" ? "עב" : "EN"}
+        </button>
       </div>
     </nav>
   );

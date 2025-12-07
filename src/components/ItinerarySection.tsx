@@ -1,7 +1,7 @@
 import { MapPin, Sparkles, Heart, Camera, UtensilsCrossed, Castle, TreePine } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useLanguage } from "@/hooks/useLanguage";
 
-// Import anime images
 import tokyoAnime from "@/assets/tokyo-shibuya-anime.png";
 import disneyAnime from "@/assets/disney-beauty-beast-anime.png";
 import kyotoAnime from "@/assets/kyoto-torii-anime.png";
@@ -11,13 +11,19 @@ import ramenAnime from "@/assets/japan-ramen-anime.png";
 
 interface DayPlan {
   day: number;
-  date: string;
-  fullDate: string;
-  location: string;
-  title: string;
-  highlights: string[];
+  dateEn: string;
+  dateHe: string;
+  fullDateEn: string;
+  fullDateHe: string;
+  locationEn: string;
+  locationHe: string;
+  titleEn: string;
+  titleHe: string;
+  highlightsEn: string[];
+  highlightsHe: string[];
   icon: React.ReactNode;
-  mood: string;
+  moodEn: string;
+  moodHe: string;
   image?: string;
   emoji: string;
 }
@@ -25,11 +31,22 @@ interface DayPlan {
 const itinerary: DayPlan[] = [
   {
     day: 1,
-    date: "יום 1",
-    fullDate: "11 בפברואר 2026",
-    location: "טוקיו",
-    title: "הגעה ושיבויה",
-    highlights: [
+    dateEn: "Day 1",
+    dateHe: "יום 1",
+    fullDateEn: "February 11, 2026",
+    fullDateHe: "11 בפברואר 2026",
+    locationEn: "Tokyo",
+    locationHe: "טוקיו",
+    titleEn: "Arrival & Shibuya",
+    titleHe: "הגעה ושיבויה",
+    highlightsEn: [
+      "Landing at Narita/Haneda Airport",
+      "Check-in at Tokyo hotel (Shibuya area)",
+      "Famous Shibuya Crossing & Hachiko statue",
+      "Evening stroll in Harajuku",
+      "Dinner in Omotesando",
+    ],
+    highlightsHe: [
       "נחיתה בשדה התעופה נריטה/הנדה",
       "צ׳ק-אין במלון בטוקיו (אזור שיבויה)",
       "מעבר החציה המפורסם בשיבויה ופסל האצ׳יקו",
@@ -37,17 +54,29 @@ const itinerary: DayPlan[] = [
       "ארוחת ערב באומוטסאנדו",
     ],
     icon: <Sparkles className="w-5 h-5" />,
-    mood: "התרגשות",
+    moodEn: "Excitement",
+    moodHe: "התרגשות",
     image: tokyoAnime,
     emoji: "🗼",
   },
   {
     day: 2,
-    date: "יום 2",
-    fullDate: "12 בפברואר 2026",
-    location: "טוקיו",
-    title: "טוקיו המסורתית",
-    highlights: [
+    dateEn: "Day 2",
+    dateHe: "יום 2",
+    fullDateEn: "February 12, 2026",
+    fullDateHe: "12 בפברואר 2026",
+    locationEn: "Tokyo",
+    locationHe: "טוקיו",
+    titleEn: "Traditional Tokyo",
+    titleHe: "טוקיו המסורתית",
+    highlightsEn: [
+      "Morning at Senso-ji Temple (Asakusa)",
+      "Nakamise shopping street",
+      "Lunch at traditional ramen restaurant",
+      "Afternoon in Akihabara",
+      "Evening at TeamLab or Tokyo Skytree",
+    ],
+    highlightsHe: [
       "בוקר במקדש סנסו-ג׳י (אסאקוסה)",
       "רחוב הקניות נאקאמיסה",
       "צהריים במסעדת ראמן מסורתית",
@@ -55,17 +84,29 @@ const itinerary: DayPlan[] = [
       "ערב בטים-לאב או מגדל טוקיו סקייטרי",
     ],
     icon: <TreePine className="w-5 h-5" />,
-    mood: "תרבות",
+    moodEn: "Culture",
+    moodHe: "תרבות",
     image: tokyoAnime,
     emoji: "⛩️",
   },
   {
     day: 3,
-    date: "יום 3",
-    fullDate: "13 בפברואר 2026",
-    location: "דיסני טוקיו",
-    title: "קסם דיסני ✨",
-    highlights: [
+    dateEn: "Day 3",
+    dateHe: "יום 3",
+    fullDateEn: "February 13, 2026",
+    fullDateHe: "13 בפברואר 2026",
+    locationEn: "Tokyo Disney",
+    locationHe: "דיסני טוקיו",
+    titleEn: "Disney Magic",
+    titleHe: "קסם דיסני",
+    highlightsEn: [
+      "Check-in at Tokyo Disneyland Hotel",
+      "Staying in Beauty & the Beast room!",
+      "Full day at Tokyo Disneyland",
+      "Beauty & the Beast attraction",
+      "Night parade and fireworks",
+    ],
+    highlightsHe: [
       "צ׳ק-אין במלון דיסנילנד טוקיו",
       "לינה בחדר היפה והחיה!",
       "יום מלא בדיסנילנד טוקיו",
@@ -73,17 +114,29 @@ const itinerary: DayPlan[] = [
       "מצעד לילי וזיקוקים",
     ],
     icon: <Castle className="w-5 h-5" />,
-    mood: "קסום",
+    moodEn: "Magical",
+    moodHe: "קסום",
     image: disneyAnime,
     emoji: "🏰",
   },
   {
     day: 4,
-    date: "יום 4",
-    fullDate: "14 בפברואר 2026 💕",
-    location: "דיסני טוקיו",
-    title: "ולנטיינז בדיסני-סי",
-    highlights: [
+    dateEn: "Day 4",
+    dateHe: "יום 4",
+    fullDateEn: "February 14, 2026 💕",
+    fullDateHe: "14 בפברואר 2026 💕",
+    locationEn: "Tokyo Disney",
+    locationHe: "דיסני טוקיו",
+    titleEn: "Valentine's at DisneySea",
+    titleHe: "ולנטיינז בדיסני-סי",
+    highlightsEn: [
+      "Morning: Breakfast at hotel",
+      "Full day at Tokyo DisneySea",
+      "Journey to the Center of the Earth",
+      "Mediterranean Harbor at sunset",
+      "Romantic Valentine's dinner 💕",
+    ],
+    highlightsHe: [
       "בוקר: ארוחת בוקר במלון",
       "יום מלא בטוקיו דיסני-סי",
       "מסע אל מרכז כדור הארץ",
@@ -91,17 +144,29 @@ const itinerary: DayPlan[] = [
       "ארוחת ערב רומנטית לולנטיינז 💕",
     ],
     icon: <Heart className="w-5 h-5" />,
-    mood: "רומנטיקה",
+    moodEn: "Romance",
+    moodHe: "רומנטיקה",
     image: disneyAnime,
     emoji: "💕",
   },
   {
     day: 5,
-    date: "יום 5",
-    fullDate: "15 בפברואר 2026",
-    location: "קיוטו",
-    title: "שינקאנסן לקיוטו",
-    highlights: [
+    dateEn: "Day 5",
+    dateHe: "יום 5",
+    fullDateEn: "February 15, 2026",
+    fullDateHe: "15 בפברואר 2026",
+    locationEn: "Kyoto",
+    locationHe: "קיוטו",
+    titleEn: "Shinkansen to Kyoto",
+    titleHe: "שינקאנסן לקיוטו",
+    highlightsEn: [
+      "Morning: Bullet train to Kyoto",
+      "Check-in at traditional Ryokan",
+      "Afternoon: Fushimi Inari (10,000 torii gates)",
+      "Evening: Stroll through Gion district",
+      "Maybe spot some Geishas",
+    ],
+    highlightsHe: [
       "בוקר: נסיעה לקיוטו ברכבת המהירה",
       "צ׳ק-אין בריוקאן מסורתי",
       "אחה״צ: מקדש פושימי אינארי (10,000 שערי טורי)",
@@ -109,17 +174,29 @@ const itinerary: DayPlan[] = [
       "אולי נראה גיישות",
     ],
     icon: <Camera className="w-5 h-5" />,
-    mood: "מסורתי",
+    moodEn: "Traditional",
+    moodHe: "מסורתי",
     image: kyotoAnime,
     emoji: "🚄",
   },
   {
     day: 6,
-    date: "יום 6",
-    fullDate: "16 בפברואר 2026",
-    location: "קיוטו",
-    title: "מקדשים וגנים",
-    highlights: [
+    dateEn: "Day 6",
+    dateHe: "יום 6",
+    fullDateEn: "February 16, 2026",
+    fullDateHe: "16 בפברואר 2026",
+    locationEn: "Kyoto",
+    locationHe: "קיוטו",
+    titleEn: "Temples & Gardens",
+    titleHe: "מקדשים וגנים",
+    highlightsEn: [
+      "Morning: Kinkaku-ji (Golden Pavilion)",
+      "Arashiyama Bamboo Forest",
+      "Lunch: Kyoto-style Kaiseki",
+      "Afternoon: Nijo Castle",
+      "Evening: Private onsen experience",
+    ],
+    highlightsHe: [
       "בוקר: קינקאקו-ג׳י (הביתן הזהוב)",
       "יער הבמבוק בארשיאמה",
       "צהריים: קייסקי בסגנון קיוטו",
@@ -127,17 +204,29 @@ const itinerary: DayPlan[] = [
       "ערב: חוויית אונסן פרטית",
     ],
     icon: <TreePine className="w-5 h-5" />,
-    mood: "שלווה",
+    moodEn: "Serenity",
+    moodHe: "שלווה",
     image: kyotoAnime,
     emoji: "🎋",
   },
   {
     day: 7,
-    date: "יום 7",
-    fullDate: "17 בפברואר 2026",
-    location: "נארה ואוסקה",
-    title: "טיול יום לנארה",
-    highlights: [
+    dateEn: "Day 7",
+    dateHe: "יום 7",
+    fullDateEn: "February 17, 2026",
+    fullDateHe: "17 בפברואר 2026",
+    locationEn: "Nara & Osaka",
+    locationHe: "נארה ואוסקה",
+    titleEn: "Day Trip to Nara",
+    titleHe: "טיול יום לנארה",
+    highlightsEn: [
+      "Morning: Day trip to Nara",
+      "Feed the sacred deer at Nara Park",
+      "Visit Todai-ji Temple",
+      "Afternoon: Travel to Osaka",
+      "Evening: Dotonbori nightlife",
+    ],
+    highlightsHe: [
       "בוקר: טיול יום לנארה",
       "האכלת האיילים הקדושים בפארק נארה",
       "ביקור במקדש טודאי-ג׳י",
@@ -145,17 +234,30 @@ const itinerary: DayPlan[] = [
       "ערב: חיי הלילה של דוטונבורי",
     ],
     icon: <Sparkles className="w-5 h-5" />,
-    mood: "הרפתקה",
+    moodEn: "Adventure",
+    moodHe: "הרפתקה",
     image: naraAnime,
     emoji: "🦌",
   },
   {
     day: 8,
-    date: "יום 8",
-    fullDate: "18 בפברואר 2026",
-    location: "אוסקה",
-    title: "סיור אוכל באוסקה",
-    highlights: [
+    dateEn: "Day 8",
+    dateHe: "יום 8",
+    fullDateEn: "February 18, 2026",
+    fullDateHe: "18 בפברואר 2026",
+    locationEn: "Osaka",
+    locationHe: "אוסקה",
+    titleEn: "Osaka Food Tour",
+    titleHe: "סיור אוכל באוסקה",
+    highlightsEn: [
+      "Morning: Osaka Castle",
+      "Kuromon Market - culinary tour",
+      "Best takoyaki and okonomiyaki",
+      "Afternoon: Shinsekai district",
+      "Last shopping in Shinsaibashi",
+      "Farewell dinner at upscale izakaya",
+    ],
+    highlightsHe: [
       "בוקר: טירת אוסקה",
       "שוק קורומון - סיור קולינרי",
       "הטאקויאקי והאוקונומיאקי הטובים ביותר",
@@ -164,17 +266,29 @@ const itinerary: DayPlan[] = [
       "ארוחת פרידה באיזקאיה יוקרתית",
     ],
     icon: <UtensilsCrossed className="w-5 h-5" />,
-    mood: "אוכל",
+    moodEn: "Foodie",
+    moodHe: "אוכל",
     image: osakaAnime,
     emoji: "🍜",
   },
   {
     day: 9,
-    date: "יום 9",
-    fullDate: "19 בפברואר 2026",
-    location: "אוסקה",
-    title: "יום חופשי באוסקה",
-    highlights: [
+    dateEn: "Day 9",
+    dateHe: "יום 9",
+    fullDateEn: "February 19, 2026",
+    fullDateHe: "19 בפברואר 2026",
+    locationEn: "Osaka",
+    locationHe: "אוסקה",
+    titleEn: "Free Day in Osaka",
+    titleHe: "יום חופשי באוסקה",
+    highlightsEn: [
+      "Morning: Universal Studios Japan (optional)",
+      "Or: Free exploration of Osaka",
+      "Visit Osaka Aquarium",
+      "Shopping in Namba",
+      "Last evening in Japan",
+    ],
+    highlightsHe: [
       "בוקר: יוניברסל סטודיוז יפן (אופציונלי)",
       "או: חקירה חופשית של אוסקה",
       "ביקור באקווריום אוסקה",
@@ -182,31 +296,46 @@ const itinerary: DayPlan[] = [
       "ערב אחרון ביפן",
     ],
     icon: <Sparkles className="w-5 h-5" />,
-    mood: "חופש",
+    moodEn: "Freedom",
+    moodHe: "חופש",
     image: osakaAnime,
     emoji: "🎡",
   },
   {
     day: 10,
-    date: "יום 10",
-    fullDate: "20 בפברואר 2026",
-    location: "יציאה",
-    title: "להתראות יפן",
-    highlights: [
+    dateEn: "Day 10",
+    dateHe: "יום 10",
+    fullDateEn: "February 20, 2026",
+    fullDateHe: "20 בפברואר 2026",
+    locationEn: "Departure",
+    locationHe: "יציאה",
+    titleEn: "Goodbye Japan",
+    titleHe: "להתראות יפן",
+    highlightsEn: [
+      "Last morning in Osaka",
+      "Travel to Kansai Airport",
+      "Last airport shopping",
+      "Flight back to Israel",
+      "Hearts full of memories ❤️",
+    ],
+    highlightsHe: [
       "בוקר אחרון באוסקה",
       "נסיעה לשדה התעופה קאנסאי",
       "קניות אחרונות בשדה התעופה",
-      "טיסה חזרה לדובאי",
+      "טיסה חזרה לישראל",
       "לבבות מלאים בזיכרונות ❤️",
     ],
     icon: <Heart className="w-5 h-5" />,
-    mood: "מתוק-מר",
+    moodEn: "Bittersweet",
+    moodHe: "מתוק-מר",
     image: ramenAnime,
     emoji: "✈️",
   },
 ];
 
 const ItinerarySection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="itinerary" className="py-20 px-6 relative overflow-hidden">
       {/* Floating decorations */}
@@ -222,11 +351,11 @@ const ItinerarySection = () => {
             <span className="text-primary font-display text-lg">旅程</span>
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
-            המסע שלכם
+            {t("Your Journey", "המסע שלכם")}
           </h2>
           <div className="section-divider mb-6" />
           <p className="text-muted-foreground max-w-xl mx-auto">
-            11-20 בפברואר 2026 • 10 ימים קסומים ביפן
+            {t("February 11-20, 2026 • 10 magical days in Japan", "11-20 בפברואר 2026 • 10 ימים קסומים ביפן")}
           </p>
         </div>
 
@@ -261,7 +390,7 @@ const ItinerarySection = () => {
                   <div className="h-40 overflow-hidden relative">
                     <img 
                       src={day.image} 
-                      alt={day.title}
+                      alt={t(day.titleEn, day.titleHe)}
                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
@@ -273,7 +402,7 @@ const ItinerarySection = () => {
                     
                     {/* Mood badge on image */}
                     <span className="absolute top-3 right-3 text-xs px-3 py-1 rounded-full bg-sakura/80 backdrop-blur-sm text-primary font-medium transition-all duration-300 group-hover:bg-gold/80">
-                      {day.mood}
+                      {t(day.moodEn, day.moodHe)}
                     </span>
                     
                     {/* Sparkle effects */}
@@ -287,10 +416,12 @@ const ItinerarySection = () => {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <p className="text-xs text-gold font-medium">{day.fullDate}</p>
-                      <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300">{day.title}</h3>
+                      <p className="text-xs text-gold font-medium">{t(day.fullDateEn, day.fullDateHe)}</p>
+                      <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300">
+                        {t(day.titleEn, day.titleHe)}
+                      </h3>
                       <p className="text-sm text-primary flex items-center gap-1 mt-1">
-                        <MapPin className="w-3 h-3" /> {day.location}
+                        <MapPin className="w-3 h-3" /> {t(day.locationEn, day.locationHe)}
                       </p>
                     </div>
                     <div className="p-2 rounded-lg bg-sakura/20 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:bg-gold/20">
@@ -299,7 +430,7 @@ const ItinerarySection = () => {
                   </div>
 
                   <ul className="space-y-2">
-                    {day.highlights.map((highlight, i) => (
+                    {(t(day.highlightsEn.join("|"), day.highlightsHe.join("|"))).split("|").map((highlight, i) => (
                       <li 
                         key={i} 
                         className="text-sm text-muted-foreground flex items-start gap-2 opacity-0 animate-fade-up hover:text-foreground transition-colors duration-200"

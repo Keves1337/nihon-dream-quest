@@ -1,8 +1,11 @@
-import { Sparkles, Star, Heart, Castle, Info } from "lucide-react";
+import { Sparkles, Heart, Castle, Info } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useLanguage } from "@/hooks/useLanguage";
 import disneyAnime from "@/assets/disney-beauty-beast-anime.png";
 
 const DisneySection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       {/* Background */}
@@ -38,9 +41,9 @@ const DisneySection = () => {
             <span className="text-primary font-display text-lg">Tokyo Disney Resort</span>
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
-            חוויית היפה והחיה
+            {t("Beauty & the Beast Experience", "חוויית היפה והחיה")}
           </h2>
-          <p className="text-gold font-medium">13-14 בפברואר 2026 💕</p>
+          <p className="text-gold font-medium">{t("February 13-14, 2026", "13-14 בפברואר 2026")} 💕</p>
           <div className="section-divider mb-6 mt-4" />
         </div>
 
@@ -50,7 +53,7 @@ const DisneySection = () => {
           <Card className="card-elevated overflow-hidden aspect-[4/3] relative group">
             <img 
               src={disneyAnime}
-              alt="סצנת אולם הנשפים מהיפה והחיה"
+              alt={t("Beauty and the Beast ballroom scene", "סצנת אולם הנשפים מהיפה והחיה")}
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
@@ -65,7 +68,7 @@ const DisneySection = () => {
             
             <div className="absolute bottom-4 left-4 right-4 text-center">
               <span className="px-4 py-2 bg-gold/90 text-foreground text-sm rounded-full font-medium shadow-lg animate-pulse">
-                ✨ ולנטיינז בדיסני! 💕
+                ✨ {t("Valentine's at Disney!", "ולנטיינז בדיסני!")} 💕
               </span>
             </div>
           </Card>
@@ -75,15 +78,15 @@ const DisneySection = () => {
             <Card className="card-japanese p-6 group hover:shadow-sakura transition-all duration-300 hover:scale-[1.02]">
               <h3 className="font-display text-xl text-foreground mb-4 flex items-center gap-2">
                 <Heart className="w-5 h-5 text-primary group-hover:animate-pulse" />
-                תכונות החדר
+                {t("Room Features", "תכונות החדר")}
               </h3>
               <ul className="space-y-3">
                 {[
-                  "עיצוב סוחף של היפה והחיה בכל רחבי החדר",
-                  "אלמנטים מסצנות הספרייה ואולם הנשפים",
-                  "פרטי דמויות בלעדיים: בל, החיה והחברים",
-                  "חדר בגודל 40 מ״ר, מיטות זוגיות או נפרדות",
-                  "קיבולת: עד 4 אורחים",
+                  t("Immersive Beauty & the Beast theming throughout", "עיצוב סוחף של היפה והחיה בכל רחבי החדר"),
+                  t("Elements from the library and ballroom scenes", "אלמנטים מסצנות הספרייה ואולם הנשפים"),
+                  t("Exclusive character details: Belle, Beast & friends", "פרטי דמויות בלעדיים: בל, החיה והחברים"),
+                  t("40 sqm room, double or twin beds", "חדר בגודל 40 מ״ר, מיטות זוגיות או נפרדות"),
+                  t("Capacity: up to 4 guests", "קיבולת: עד 4 אורחים"),
                 ].map((item, i) => (
                   <li 
                     key={i}
@@ -100,14 +103,14 @@ const DisneySection = () => {
             <Card className="card-japanese p-6 group hover:shadow-sakura transition-all duration-300 hover:scale-[1.02]">
               <h3 className="font-display text-xl text-foreground mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-gold group-hover:animate-spin" />
-                הטבות לאורחים
+                {t("Guest Benefits", "הטבות לאורחים")}
               </h3>
               <ul className="space-y-3">
                 {[
-                  { label: "Happy Entry:", desc: "כניסה 15 דקות לפני הפתיחה" },
-                  { label: "גישה ישירה", desc: "לדיסנילנד טוקיו" },
-                  { label: "פינת מתנות", desc: "עם סחורה בלעדית" },
-                  { label: "ארוחת בוקר", desc: "עם דמויות (אופציונלי)" },
+                  { label: t("Happy Entry:", "Happy Entry:"), desc: t("15 minutes before opening", "כניסה 15 דקות לפני הפתיחה") },
+                  { label: t("Direct Access", "גישה ישירה"), desc: t("to Tokyo Disneyland", "לדיסנילנד טוקיו") },
+                  { label: t("Gift Corner", "פינת מתנות"), desc: t("with exclusive merchandise", "עם סחורה בלעדית") },
+                  { label: t("Character Breakfast", "ארוחת בוקר"), desc: t("(optional)", "עם דמויות (אופציונלי)") },
                 ].map((item, i) => (
                   <li 
                     key={i}
@@ -125,10 +128,12 @@ const DisneySection = () => {
               <div className="flex items-start gap-3">
                 <Info className="w-5 h-5 text-gold flex-shrink-0 mt-0.5 animate-bounce" />
                 <div>
-                  <p className="text-sm font-medium text-foreground">הערה להזמנה</p>
+                  <p className="text-sm font-medium text-foreground">{t("Booking Note", "הערה להזמנה")}</p>
                   <p className="text-sm text-muted-foreground">
-                    ניתן להזמין מלונות דיסני חודשיים מראש בלבד. 
-                    החדר זמין מ-1 באפריל 2026 – מושלם לתאריכים שלכם!
+                    {t(
+                      "Disney hotels can only be booked 2 months in advance. Room available from April 1, 2026 – perfect for your dates!",
+                      "ניתן להזמין מלונות דיסני חודשיים מראש בלבד. החדר זמין מ-1 באפריל 2026 – מושלם לתאריכים שלכם!"
+                    )}
                   </p>
                 </div>
               </div>

@@ -1,6 +1,9 @@
 import { Heart } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="py-12 px-6 bg-foreground text-background relative overflow-hidden">
       {/* Floating decorations */}
@@ -20,18 +23,20 @@ const Footer = () => {
           Amit & Jonathan
         </h3>
         <p className="text-sm text-background/60 mb-4 font-display italic">
-          ירח דבש ביפן • פברואר 2026
+          {t("Honeymoon in Japan • February 2026", "ירח דבש ביפן • פברואר 2026")}
         </p>
 
         <div className="flex items-center justify-center gap-2 text-sakura">
           <Heart className="w-4 h-4 fill-current animate-pulse" />
-          <span className="text-sm">נוצר באהבה להרפתקה שלנו</span>
+          <span className="text-sm">{t("Made with love for our adventure", "נוצר באהבה להרפתקה שלנו")}</span>
           <Heart className="w-4 h-4 fill-current animate-pulse" />
         </div>
 
         <p className="mt-8 text-xs text-background/40">
-          כל המחירים הם הערכות וכפופים לשינויים. 
-          הזמינו מוקדם לחוויה הטובה ביותר!
+          {t(
+            "All prices are estimates and subject to change. Book early for the best experience!",
+            "כל המחירים הם הערכות וכפופים לשינויים. הזמינו מוקדם לחוויה הטובה ביותר!"
+          )}
         </p>
       </div>
     </footer>

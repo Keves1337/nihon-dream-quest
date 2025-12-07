@@ -1,7 +1,10 @@
 import { ChevronDown } from "lucide-react";
 import heroImage from "@/assets/hero-sakura-shrine.png";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   const scrollToContent = () => {
     document.getElementById("itinerary")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -57,45 +60,45 @@ const HeroSection = () => {
         </h1>
         
         <p className="font-display text-xl md:text-2xl text-primary italic mb-6 animate-fade-up animation-delay-200">
-          ハネムーン • ירח דבש ביפן
+          {t("Honeymoon in Japan", "ירח דבש ביפן")} • ハネムーン
         </p>
 
         <div className="flex items-center justify-center gap-3 mb-4 animate-fade-up animation-delay-300">
           <span className="px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-primary font-medium border border-primary/20">
-            ישראל
+            {t("Israel", "ישראל")}
           </span>
           <span className="text-gold text-2xl animate-float">✈️</span>
           <span className="px-4 py-2 bg-sakura/30 backdrop-blur-sm rounded-full text-primary font-medium border border-sakura/30">
-            יפן
+            {t("Japan", "יפן")}
           </span>
         </div>
 
         {/* Date badge */}
         <div className="inline-block px-6 py-2 bg-gold/20 backdrop-blur-sm rounded-full border border-gold/30 mb-8 animate-fade-up animation-delay-300">
           <p className="text-sm font-medium text-foreground">
-            📅 11-20 בפברואר 2026
+            {t("February 11-20, 2026", "11-20 בפברואר 2026")}
           </p>
         </div>
 
         <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-12 animate-fade-up animation-delay-500 drop-shadow-sm">
-          10 ימים קסומים בארץ השמש העולה 🌅
+          {t("10 magical days in the Land of the Rising Sun", "10 ימים קסומים בארץ השמש העולה")}
         </p>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mb-16 animate-fade-up animation-delay-700">
           <div className="text-center p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/30 hover:scale-105 hover:bg-sakura/20 transition-all duration-300 group">
             <p className="font-display text-3xl md:text-4xl text-primary">10</p>
-            <p className="text-sm text-muted-foreground">ימים</p>
+            <p className="text-sm text-muted-foreground">{t("Days", "ימים")}</p>
             <span className="text-xl opacity-0 group-hover:opacity-100 transition-opacity">🗾</span>
           </div>
           <div className="text-center p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/30 hover:scale-105 hover:bg-sakura/20 transition-all duration-300 group">
             <p className="font-display text-3xl md:text-4xl text-primary">4</p>
-            <p className="text-sm text-muted-foreground">ערים</p>
+            <p className="text-sm text-muted-foreground">{t("Cities", "ערים")}</p>
             <span className="text-xl opacity-0 group-hover:opacity-100 transition-opacity">🏙️</span>
           </div>
           <div className="text-center p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/30 hover:scale-105 hover:bg-sakura/20 transition-all duration-300 group">
             <p className="font-display text-3xl md:text-4xl text-primary">∞</p>
-            <p className="text-sm text-muted-foreground">זיכרונות</p>
+            <p className="text-sm text-muted-foreground">{t("Memories", "זיכרונות")}</p>
             <span className="text-xl opacity-0 group-hover:opacity-100 transition-opacity">💕</span>
           </div>
         </div>
@@ -106,7 +109,7 @@ const HeroSection = () => {
           className="animate-float text-primary/60 hover:text-primary transition-colors"
         >
           <ChevronDown className="w-8 h-8 mx-auto" />
-          <span className="text-sm">גללו למטה</span>
+          <span className="text-sm">{t("Scroll down", "גללו למטה")}</span>
         </button>
       </div>
     </section>
