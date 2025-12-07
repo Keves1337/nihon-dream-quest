@@ -66,7 +66,7 @@ const HeroSection = () => {
         {/* Date badge */}
         <div className="inline-block px-4 py-1.5 md:px-6 md:py-2 bg-gold/20 backdrop-blur-sm rounded-full border border-gold/30 mb-6 md:mb-8 animate-fade-up animation-delay-300">
           <p className="text-xs md:text-sm font-medium text-foreground">
-            {t("February 11-20, 2026", "11-20 בפברואר 2026")}
+            {t("February 11-21, 2026", "11-21 בפברואר 2026")}
           </p>
         </div>
 
