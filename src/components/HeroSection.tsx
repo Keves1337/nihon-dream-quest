@@ -13,7 +13,32 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image */}
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 bg-no-repeat"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+        }}
+      />
+      {/* Mobile-optimized background that shows the couple */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-bg {
+            background-size: 140% auto !important;
+            background-position: center 20% !important;
+          }
+        }
+      `}</style>
+      <div 
+        className="hero-bg absolute inset-0 z-0 bg-no-repeat md:hidden"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: '140% auto',
+          backgroundPosition: 'center 20%',
+        }}
+      />
+      <div 
+        className="hidden md:block absolute inset-0 z-0 bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
