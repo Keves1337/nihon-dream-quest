@@ -2,9 +2,6 @@ import { Sparkles, Star, Heart, Castle, Info } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import disneyAnime from "@/assets/disney-beauty-beast-anime.png";
 
-// USD to NIS conversion rate
-const USD_TO_NIS = 3.7;
-
 const DisneySection = () => {
   return (
     <section className="py-20 px-6 relative overflow-hidden">
@@ -46,7 +43,8 @@ const DisneySection = () => {
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
             חווית היפה והחיה
           </h2>
-          <div className="section-divider mb-6" />
+          <p className="text-gold font-medium">13-14 בפברואר 2026 💕</p>
+          <div className="section-divider mb-6 mt-4" />
         </div>
 
         {/* Main content */}
@@ -62,7 +60,7 @@ const DisneySection = () => {
             
             <div className="absolute bottom-4 left-4 right-4 text-center">
               <span className="px-4 py-2 bg-gold/90 text-foreground text-sm rounded-full font-medium shadow-lg animate-pulse">
-                ✨ זמין מ-1 באפריל 2026
+                ✨ ולנטיינז בדיסני! 💕
               </span>
             </div>
           </Card>
@@ -125,7 +123,7 @@ const DisneySection = () => {
                   <p className="text-sm font-medium text-foreground">הערה להזמנה</p>
                   <p className="text-sm text-muted-foreground">
                     ניתן להזמין מלונות דיסני רק חודשיים מראש. 
-                    חדר היפה והחיה זמין מ-1 באפריל 2026.
+                    החדר זמין מ-1 באפריל 2026 - מושלם לתאריכים שלכם!
                   </p>
                 </div>
               </div>
@@ -133,7 +131,7 @@ const DisneySection = () => {
 
             <div className="flex gap-4 pt-4">
               <div className="flex-1 text-center p-4 rounded-lg bg-primary/10 hover:scale-105 transition-transform duration-300">
-                <p className="text-2xl font-display text-primary">~₪{Math.round(900 * USD_TO_NIS).toLocaleString()}</p>
+                <p className="text-2xl font-display text-primary">~₪2,500</p>
                 <p className="text-xs text-muted-foreground">לכל לילה (משוער)</p>
               </div>
               <div className="flex-1 text-center p-4 rounded-lg bg-sakura/20 hover:scale-105 transition-transform duration-300">

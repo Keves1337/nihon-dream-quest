@@ -1,12 +1,7 @@
 import { Plane, Hotel, Train, Utensils, Ticket, ShoppingBag, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import tokyoAnime from "@/assets/tokyo-shibuya-anime.png";
-import kyotoAnime from "@/assets/kyoto-torii-anime.png";
 import ramenAnime from "@/assets/japan-ramen-anime.png";
 import shinkansenAnime from "@/assets/shinkansen-anime.png";
-
-// USD to NIS conversion rate (approximately 3.7)
-const USD_TO_NIS = 3.7;
 
 interface BudgetItem {
   category: string;
@@ -22,7 +17,7 @@ const budgetData: BudgetItem[] = [
     icon: <Plane className="w-5 h-5" />,
     color: "ocean",
     items: [
-      { name: "דובאי → טוקיו (הלוך-חזור)", cost: Math.round(2400 * USD_TO_NIS), notes: "2 נוסעים, מחלקת תיירים" },
+      { name: "דובאי → טוקיו (הלוך-חזור)", cost: 7000, notes: "2 נוסעים, מחלקת תיירים" },
     ],
   },
   {
@@ -30,10 +25,10 @@ const budgetData: BudgetItem[] = [
     icon: <Hotel className="w-5 h-5" />,
     color: "sakura",
     items: [
-      { name: "מלון דיסנילנד טוקיו (חדר היפה והחיה)", cost: Math.round(1800 * USD_TO_NIS), notes: "2 לילות" },
-      { name: "מלון בטוקיו (אזור שיבויה)", cost: Math.round(600 * USD_TO_NIS), notes: "2 לילות" },
-      { name: "ריוקאן מסורתי בקיוטו", cost: Math.round(800 * USD_TO_NIS), notes: "2 לילות" },
-      { name: "מלון באוסקה", cost: Math.round(400 * USD_TO_NIS), notes: "2 לילות" },
+      { name: "מלון דיסנילנד טוקיו (חדר היפה והחיה)", cost: 5000, notes: "2 לילות" },
+      { name: "מלון בטוקיו (אזור שיבויה)", cost: 1500, notes: "2 לילות" },
+      { name: "ריוקאן בקיוטו", cost: 2000, notes: "2 לילות" },
+      { name: "מלון באוסקה", cost: 1800, notes: "3 לילות" },
     ],
   },
   {
@@ -42,9 +37,9 @@ const budgetData: BudgetItem[] = [
     color: "bamboo",
     image: shinkansenAnime,
     items: [
-      { name: "JR Pass ל-7 ימים", cost: Math.round(660 * USD_TO_NIS), notes: "2 × ¥50,000" },
-      { name: "מטרו טוקיו ותחבורה מקומית", cost: Math.round(150 * USD_TO_NIS), notes: "כרטיסי IC, אוטובוסים" },
-      { name: "העברות משדה התעופה", cost: Math.round(100 * USD_TO_NIS), notes: "Narita Express" },
+      { name: "JR Pass ל-7 ימים", cost: 2400, notes: "2 × ¥50,000" },
+      { name: "מטרו טוקיו ותחבורה מקומית", cost: 400, notes: "כרטיסי IC, אוטובוסים" },
+      { name: "העברות משדה התעופה", cost: 300, notes: "Narita Express" },
     ],
   },
   {
@@ -53,8 +48,8 @@ const budgetData: BudgetItem[] = [
     color: "gold",
     image: ramenAnime,
     items: [
-      { name: "ארוחות יומיות", cost: Math.round(1350 * USD_TO_NIS), notes: "~₪555/יום × 9 ימים" },
-      { name: "חוויות אוכל מיוחדות", cost: Math.round(400 * USD_TO_NIS), notes: "קייסקי, אומקסה סושי" },
+      { name: "ארוחות יומיות", cost: 4000, notes: "~₪400/יום × 10 ימים" },
+      { name: "חוויות אוכל מיוחדות", cost: 800, notes: "ארוחת ולנטיינז, איזקאיה" },
     ],
   },
   {
@@ -62,11 +57,11 @@ const budgetData: BudgetItem[] = [
     icon: <Ticket className="w-5 h-5" />,
     color: "primary",
     items: [
-      { name: "דיסנילנד טוקיו (כרטיס ליומיים)", cost: Math.round(400 * USD_TO_NIS), notes: "2 כרטיסים" },
-      { name: "דיסנילנד טוקיו סי (יום אחד)", cost: Math.round(200 * USD_TO_NIS), notes: "2 כרטיסי מבוגרים" },
-      { name: "כניסה למקדשים בקיוטו", cost: Math.round(100 * USD_TO_NIS), notes: "פושימי אינארי, קינקקו-ג'י" },
-      { name: "טירת אוסקה ואטרקציות", cost: Math.round(80 * USD_TO_NIS), notes: "דמי כניסה שונים" },
-      { name: "חווית אונסן", cost: Math.round(150 * USD_TO_NIS), notes: "אונסן פרטי" },
+      { name: "דיסנילנד טוקיו (יום אחד)", cost: 700, notes: "2 כרטיסים" },
+      { name: "דיסני-סי טוקיו (יום אחד)", cost: 700, notes: "2 כרטיסים" },
+      { name: "כניסה למקדשים בקיוטו", cost: 200, notes: "פושימי אינארי, קינקקו-ג'י" },
+      { name: "טירת אוסקה ואטרקציות", cost: 200, notes: "דמי כניסה שונים" },
+      { name: "חווית אונסן", cost: 400, notes: "אונסן בריוקאן" },
     ],
   },
   {
@@ -74,8 +69,8 @@ const budgetData: BudgetItem[] = [
     icon: <ShoppingBag className="w-5 h-5" />,
     color: "accent",
     items: [
-      { name: "מזכרות ומתנות", cost: Math.round(500 * USD_TO_NIS), notes: "משוער" },
-      { name: "שונות", cost: Math.round(200 * USD_TO_NIS), notes: "חירום, תוספות" },
+      { name: "מזכרות ומתנות", cost: 1500, notes: "משוער" },
+      { name: "שונות", cost: 500, notes: "חירום, תוספות" },
     ],
   },
 ];
@@ -104,7 +99,7 @@ const BudgetSummary = () => {
           </h2>
           <div className="section-divider mb-6" />
           <p className="text-muted-foreground max-w-xl mx-auto">
-            עלויות משוערות לירח הדבש שלכם בן 9 הימים ביפן
+            עלויות משוערות לירח הדבש שלכם • 11-20 בפברואר 2026
           </p>
         </div>
 
@@ -187,17 +182,28 @@ const BudgetSummary = () => {
               ₪{grandTotal.toLocaleString()}
             </p>
             <p className="text-sm text-muted-foreground">
-              ≈ ¥{Math.round(grandTotal * 40.5).toLocaleString()} (בשער ¥40.5/₪1)
+              ≈ ${Math.round(grandTotal / 3.7).toLocaleString()} דולר
             </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              ≈ ${Math.round(grandTotal / USD_TO_NIS).toLocaleString()} דולר
+            <p className="text-sm text-muted-foreground mt-1">
+              ≈ ¥{Math.round(grandTotal * 40.5).toLocaleString()} ין
             </p>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-border/50">
+          <div className="mt-8 pt-6 border-t border-border/50 grid grid-cols-2 gap-4 text-center">
+            <div>
+              <p className="text-2xl font-display text-primary">₪{Math.round(grandTotal / 10).toLocaleString()}</p>
+              <p className="text-xs text-muted-foreground">ממוצע ליום</p>
+            </div>
+            <div>
+              <p className="text-2xl font-display text-primary">₪{Math.round(grandTotal / 2).toLocaleString()}</p>
+              <p className="text-xs text-muted-foreground">לכל אחד</p>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-border/50">
             <p className="text-sm text-center text-muted-foreground">
-              💡 <strong>טיפ:</strong> המחירים הם הערכות ועשויים להשתנות בהתאם לעונה, 
-              זמינות ושערי חליפין. הזמינו מוקדם לקבלת עסקאות טובות יותר!
+              💡 <strong>טיפ:</strong> תקציב בינוני שמאפשר חוויות מיוחדות תוך שמירה על סבירות. 
+              הזמינו מוקדם לקבלת מחירים טובים יותר!
             </p>
           </div>
         </Card>

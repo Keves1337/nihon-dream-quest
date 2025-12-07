@@ -12,6 +12,7 @@ import ramenAnime from "@/assets/japan-ramen-anime.png";
 interface DayPlan {
   day: number;
   date: string;
+  fullDate: string;
   location: string;
   title: string;
   highlights: string[];
@@ -25,6 +26,7 @@ const itinerary: DayPlan[] = [
   {
     day: 1,
     date: "יום 1",
+    fullDate: "11 בפברואר 2026",
     location: "טוקיו",
     title: "הגעה ושיבויה",
     highlights: [
@@ -42,6 +44,7 @@ const itinerary: DayPlan[] = [
   {
     day: 2,
     date: "יום 2",
+    fullDate: "12 בפברואר 2026",
     location: "טוקיו",
     title: "טוקיו המסורתית",
     highlights: [
@@ -58,7 +61,8 @@ const itinerary: DayPlan[] = [
   },
   {
     day: 3,
-    date: "יום 3-4",
+    date: "יום 3",
+    fullDate: "13 בפברואר 2026",
     location: "דיסני טוקיו",
     title: "✨ קסם דיסני",
     highlights: [
@@ -76,14 +80,15 @@ const itinerary: DayPlan[] = [
   {
     day: 4,
     date: "יום 4",
+    fullDate: "14 בפברואר 2026 💕",
     location: "דיסני טוקיו",
-    title: "הרפתקה בדיסני-סי",
+    title: "ולנטיינז בדיסני-סי",
     highlights: [
       "בוקר: ארוחת בוקר במלון והנאה מהמתקנים",
       "יום מלא בטוקיו דיסני-סי",
       "מסע אל מרכז כדור הארץ",
       "נמל הים התיכון בשקיעה",
-      "ארוחת ערב רומנטית בפארק",
+      "ארוחת ערב רומנטית לולנטיינז 💕",
     ],
     accommodation: "מלון דיסנילנד טוקיו - חדר היפה והחיה",
     icon: <Heart className="w-5 h-5" />,
@@ -93,6 +98,7 @@ const itinerary: DayPlan[] = [
   {
     day: 5,
     date: "יום 5",
+    fullDate: "15 בפברואר 2026",
     location: "קיוטו",
     title: "שינקנסן לקיוטו",
     highlights: [
@@ -110,6 +116,7 @@ const itinerary: DayPlan[] = [
   {
     day: 6,
     date: "יום 6",
+    fullDate: "16 בפברואר 2026",
     location: "קיוטו",
     title: "מקדשים וגנים",
     highlights: [
@@ -127,6 +134,7 @@ const itinerary: DayPlan[] = [
   {
     day: 7,
     date: "יום 7",
+    fullDate: "17 בפברואר 2026",
     location: "נארה ואוסקה",
     title: "טיול יום ואוסקה",
     highlights: [
@@ -144,6 +152,7 @@ const itinerary: DayPlan[] = [
   {
     day: 8,
     date: "יום 8",
+    fullDate: "18 בפברואר 2026",
     location: "אוסקה",
     title: "סיור אוכל באוסקה",
     highlights: [
@@ -162,6 +171,25 @@ const itinerary: DayPlan[] = [
   {
     day: 9,
     date: "יום 9",
+    fullDate: "19 בפברואר 2026",
+    location: "אוסקה",
+    title: "יום חופשי באוסקה",
+    highlights: [
+      "בוקר: Universal Studios Japan (אופציונלי)",
+      "או: חקירה חופשית של אוסקה",
+      "ביקור באקווריום אוסקה",
+      "קניות ב-Namba",
+      "ערב אחרון ביפן",
+    ],
+    accommodation: "מלון אוסקה",
+    icon: <Sparkles className="w-5 h-5" />,
+    mood: "חופש",
+    image: osakaAnime,
+  },
+  {
+    day: 10,
+    date: "יום 10",
+    fullDate: "20 בפברואר 2026",
     location: "יציאה",
     title: "להתראות יפן",
     highlights: [
@@ -193,7 +221,7 @@ const ItinerarySection = () => {
           </h2>
           <div className="section-divider mb-6" />
           <p className="text-muted-foreground max-w-xl mx-auto">
-            הרפתקה מתוכננת בקפידה של 9 ימים דרך היעדים הקסומים ביותר של יפן
+            11-20 בפברואר 2026 • 10 ימים קסומים ביפן
           </p>
         </div>
 
@@ -242,6 +270,7 @@ const ItinerarySection = () => {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
+                      <p className="text-xs text-gold font-medium">{day.fullDate}</p>
                       <p className="text-sm text-muted-foreground">{day.date}</p>
                       <h3 className="font-display text-2xl text-foreground">{day.title}</h3>
                       <p className="text-sm text-primary flex items-center gap-1 mt-1">

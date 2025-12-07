@@ -54,7 +54,7 @@ const HeroSection = () => {
           ハネムーン • ירח דבש ביפן
         </p>
 
-        <div className="flex items-center justify-center gap-3 mb-8 animate-fade-up animation-delay-300">
+        <div className="flex items-center justify-center gap-3 mb-4 animate-fade-up animation-delay-300">
           <span className="px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-primary font-medium border border-primary/20">
             Dubai
           </span>
@@ -64,14 +64,21 @@ const HeroSection = () => {
           </span>
         </div>
 
+        {/* Date badge */}
+        <div className="inline-block px-6 py-2 bg-gold/20 backdrop-blur-sm rounded-full border border-gold/30 mb-8 animate-fade-up animation-delay-300">
+          <p className="text-sm font-medium text-foreground">
+            📅 11-20 בפברואר 2026
+          </p>
+        </div>
+
         <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-12 animate-fade-up animation-delay-500 drop-shadow-sm">
-          9 ימים קסומים בארץ השמש העולה
+          10 ימים קסומים בארץ השמש העולה
         </p>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto mb-16 animate-fade-up animation-delay-700">
           <div className="text-center p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/30 hover:scale-105 transition-transform duration-300">
-            <p className="font-display text-3xl md:text-4xl text-primary">9</p>
+            <p className="font-display text-3xl md:text-4xl text-primary">10</p>
             <p className="text-sm text-muted-foreground">ימים</p>
           </div>
           <div className="text-center p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/30 hover:scale-105 transition-transform duration-300">
