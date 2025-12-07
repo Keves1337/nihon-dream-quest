@@ -1,6 +1,12 @@
 import { MapPin, Sparkles, Heart, Camera, UtensilsCrossed, Castle, TreePine } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useState } from "react";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 import tokyoAnime from "@/assets/tokyo-shibuya-anime.png";
 import tokyoSensojiAnime from "@/assets/tokyo-sensoji-anime.png";
@@ -13,6 +19,58 @@ import osakaAnime from "@/assets/osaka-dotonbori-anime.png";
 import osakaUniversalAnime from "@/assets/osaka-universal-anime.png";
 import departureAnime from "@/assets/japan-departure-anime.png";
 
+// Highlight images
+import naritaAirportAnime from "@/assets/highlights/narita-airport-anime.png";
+import shibuyaHachikoAnime from "@/assets/highlights/shibuya-hachiko-anime.png";
+import harajukuAnime from "@/assets/highlights/harajuku-anime.png";
+import omotesandoAnime from "@/assets/highlights/omotesando-anime.png";
+import sensojiTempleAnime from "@/assets/highlights/sensoji-temple-anime.png";
+import nakamiseAnime from "@/assets/highlights/nakamise-anime.png";
+import ramenAnime from "@/assets/highlights/ramen-anime.png";
+import akihabaraAnime from "@/assets/highlights/akihabara-anime.png";
+import teamlabAnime from "@/assets/highlights/teamlab-anime.png";
+import disneyHotelAnime from "@/assets/highlights/disney-hotel-anime.png";
+import beautyBeastRoomAnime from "@/assets/highlights/beauty-beast-room-anime.png";
+import disneyParadeAnime from "@/assets/highlights/disney-parade-anime.png";
+import disneyseaHarborAnime from "@/assets/highlights/disneysea-harbor-anime.png";
+import shinkansenTrainAnime from "@/assets/highlights/shinkansen-train-anime.png";
+import ryokanAnime from "@/assets/highlights/ryokan-anime.png";
+import fushimiInariAnime from "@/assets/highlights/fushimi-inari-anime.png";
+import gionGeishaAnime from "@/assets/highlights/gion-geisha-anime.png";
+import kinkakujiAnime from "@/assets/highlights/kinkakuji-anime.png";
+import bambooForestAnime from "@/assets/highlights/bamboo-forest-anime.png";
+import kaisekiAnime from "@/assets/highlights/kaiseki-anime.png";
+import nijoCastleAnime from "@/assets/highlights/nijo-castle-anime.png";
+import onsenAnime from "@/assets/highlights/onsen-anime.png";
+import naraDeerParkAnime from "@/assets/highlights/nara-deer-park-anime.png";
+import todaijiTempleAnime from "@/assets/highlights/todaiji-temple-anime.png";
+import dotonboriNightAnime from "@/assets/highlights/dotonbori-night-anime.png";
+import osakaCastleAnime from "@/assets/highlights/osaka-castle-anime.png";
+import kuromonMarketAnime from "@/assets/highlights/kuromon-market-anime.png";
+import takoyakiAnime from "@/assets/highlights/takoyaki-anime.png";
+import shinsekaiAnime from "@/assets/highlights/shinsekai-anime.png";
+import izakayaAnime from "@/assets/highlights/izakaya-anime.png";
+import universalStudiosAnime from "@/assets/highlights/universal-studios-anime.png";
+import aquariumAnime from "@/assets/highlights/aquarium-anime.png";
+import nambaShoppingAnime from "@/assets/highlights/namba-shopping-anime.png";
+import kansaiAirportAnime from "@/assets/highlights/kansai-airport-anime.png";
+import flightHomeAnime from "@/assets/highlights/flight-home-anime.png";
+import valentineDinnerAnime from "@/assets/highlights/valentine-dinner-anime.png";
+import skytreeAnime from "@/assets/highlights/skytree-anime.png";
+import beautyBeastRideAnime from "@/assets/highlights/beauty-beast-ride-anime.png";
+import journeyCenterEarthAnime from "@/assets/highlights/journey-center-earth-anime.png";
+import hotelBreakfastAnime from "@/assets/highlights/hotel-breakfast-anime.png";
+import airportShoppingAnime from "@/assets/highlights/airport-shopping-anime.png";
+import memoriesHeartAnime from "@/assets/highlights/memories-heart-anime.png";
+import shinsaibashiAnime from "@/assets/highlights/shinsaibashi-anime.png";
+import tokyoHotelAnime from "@/assets/highlights/tokyo-hotel-anime.png";
+
+interface HighlightItem {
+  textEn: string;
+  textHe: string;
+  image: string;
+}
+
 interface DayPlan {
   day: number;
   dateEn: string;
@@ -23,8 +81,7 @@ interface DayPlan {
   locationHe: string;
   titleEn: string;
   titleHe: string;
-  highlightsEn: string[];
-  highlightsHe: string[];
+  highlights: HighlightItem[];
   icon: React.ReactNode;
   moodEn: string;
   moodHe: string;
@@ -43,19 +100,12 @@ const itinerary: DayPlan[] = [
     locationHe: "טוקיו",
     titleEn: "Arrival & Shibuya",
     titleHe: "הגעה ושיבויה",
-    highlightsEn: [
-      "Landing at Narita/Haneda Airport",
-      "Check-in at Tokyo hotel (Shibuya area)",
-      "Famous Shibuya Crossing & Hachiko statue",
-      "Evening stroll in Harajuku",
-      "Dinner in Omotesando",
-    ],
-    highlightsHe: [
-      "נחיתה בשדה התעופה נריטה/הנדה",
-      "צ׳ק-אין במלון בטוקיו (אזור שיבויה)",
-      "מעבר החציה המפורסם בשיבויה ופסל האצ׳יקו",
-      "טיול ערב בהראג׳וקו",
-      "ארוחת ערב באומוטסאנדו",
+    highlights: [
+      { textEn: "Landing at Narita/Haneda Airport", textHe: "נחיתה בשדה התעופה נריטה/הנדה", image: naritaAirportAnime },
+      { textEn: "Check-in at Tokyo hotel (Shibuya area)", textHe: "צ׳ק-אין במלון בטוקיו (אזור שיבויה)", image: tokyoHotelAnime },
+      { textEn: "Famous Shibuya Crossing & Hachiko statue", textHe: "מעבר החציה המפורסם בשיבויה ופסל האצ׳יקו", image: shibuyaHachikoAnime },
+      { textEn: "Evening stroll in Harajuku", textHe: "טיול ערב בהראג׳וקו", image: harajukuAnime },
+      { textEn: "Dinner in Omotesando", textHe: "ארוחת ערב באומוטסאנדו", image: omotesandoAnime },
     ],
     icon: <Sparkles className="w-5 h-5" />,
     moodEn: "Excitement",
@@ -73,19 +123,12 @@ const itinerary: DayPlan[] = [
     locationHe: "טוקיו",
     titleEn: "Traditional Tokyo",
     titleHe: "טוקיו המסורתית",
-    highlightsEn: [
-      "Morning at Senso-ji Temple (Asakusa)",
-      "Nakamise shopping street",
-      "Lunch at traditional ramen restaurant",
-      "Afternoon in Akihabara",
-      "Evening at TeamLab or Tokyo Skytree",
-    ],
-    highlightsHe: [
-      "בוקר במקדש סנסו-ג׳י (אסאקוסה)",
-      "רחוב הקניות נאקאמיסה",
-      "צהריים במסעדת ראמן מסורתית",
-      "אחה״צ באקיהאבארה",
-      "ערב בטים-לאב או מגדל טוקיו סקייטרי",
+    highlights: [
+      { textEn: "Morning at Senso-ji Temple (Asakusa)", textHe: "בוקר במקדש סנסו-ג׳י (אסאקוסה)", image: sensojiTempleAnime },
+      { textEn: "Nakamise shopping street", textHe: "רחוב הקניות נאקאמיסה", image: nakamiseAnime },
+      { textEn: "Lunch at traditional ramen restaurant", textHe: "צהריים במסעדת ראמן מסורתית", image: ramenAnime },
+      { textEn: "Afternoon in Akihabara", textHe: "אחה״צ באקיהאבארה", image: akihabaraAnime },
+      { textEn: "Evening at TeamLab or Tokyo Skytree", textHe: "ערב בטים-לאב או מגדל טוקיו סקייטרי", image: teamlabAnime },
     ],
     icon: <TreePine className="w-5 h-5" />,
     moodEn: "Culture",
@@ -103,19 +146,12 @@ const itinerary: DayPlan[] = [
     locationHe: "דיסני טוקיו",
     titleEn: "Disney Magic",
     titleHe: "קסם דיסני",
-    highlightsEn: [
-      "Check-in at Tokyo Disneyland Hotel",
-      "Staying in Beauty & the Beast room!",
-      "Full day at Tokyo Disneyland",
-      "Beauty & the Beast attraction",
-      "Night parade and fireworks",
-    ],
-    highlightsHe: [
-      "צ׳ק-אין במלון דיסנילנד טוקיו",
-      "לינה בחדר היפה והחיה!",
-      "יום מלא בדיסנילנד טוקיו",
-      "אטרקציית היפה והחיה",
-      "מצעד לילי וזיקוקים",
+    highlights: [
+      { textEn: "Check-in at Tokyo Disneyland Hotel", textHe: "צ׳ק-אין במלון דיסנילנד טוקיו", image: disneyHotelAnime },
+      { textEn: "Staying in Beauty & the Beast room!", textHe: "לינה בחדר היפה והחיה!", image: beautyBeastRoomAnime },
+      { textEn: "Full day at Tokyo Disneyland", textHe: "יום מלא בדיסנילנד טוקיו", image: disneyAnime },
+      { textEn: "Beauty & the Beast attraction", textHe: "אטרקציית היפה והחיה", image: beautyBeastRideAnime },
+      { textEn: "Night parade and fireworks", textHe: "מצעד לילי וזיקוקים", image: disneyParadeAnime },
     ],
     icon: <Castle className="w-5 h-5" />,
     moodEn: "Magical",
@@ -133,19 +169,12 @@ const itinerary: DayPlan[] = [
     locationHe: "דיסני טוקיו",
     titleEn: "Valentine's at DisneySea",
     titleHe: "ולנטיינז בדיסני-סי",
-    highlightsEn: [
-      "Morning: Breakfast at hotel",
-      "Full day at Tokyo DisneySea",
-      "Journey to the Center of the Earth",
-      "Mediterranean Harbor at sunset",
-      "Romantic Valentine's dinner 💕",
-    ],
-    highlightsHe: [
-      "בוקר: ארוחת בוקר במלון",
-      "יום מלא בטוקיו דיסני-סי",
-      "מסע אל מרכז כדור הארץ",
-      "נמל הים התיכון בשקיעה",
-      "ארוחת ערב רומנטית לולנטיינז 💕",
+    highlights: [
+      { textEn: "Morning: Breakfast at hotel", textHe: "בוקר: ארוחת בוקר במלון", image: hotelBreakfastAnime },
+      { textEn: "Full day at Tokyo DisneySea", textHe: "יום מלא בטוקיו דיסני-סי", image: disneyseaAnime },
+      { textEn: "Journey to the Center of the Earth", textHe: "מסע אל מרכז כדור הארץ", image: journeyCenterEarthAnime },
+      { textEn: "Mediterranean Harbor at sunset", textHe: "נמל הים התיכון בשקיעה", image: disneyseaHarborAnime },
+      { textEn: "Romantic Valentine's dinner 💕", textHe: "ארוחת ערב רומנטית לולנטיינז 💕", image: valentineDinnerAnime },
     ],
     icon: <Heart className="w-5 h-5" />,
     moodEn: "Romance",
@@ -163,19 +192,12 @@ const itinerary: DayPlan[] = [
     locationHe: "קיוטו",
     titleEn: "Shinkansen to Kyoto",
     titleHe: "שינקאנסן לקיוטו",
-    highlightsEn: [
-      "Morning: Bullet train to Kyoto",
-      "Check-in at traditional Ryokan",
-      "Afternoon: Fushimi Inari (10,000 torii gates)",
-      "Evening: Stroll through Gion district",
-      "Maybe spot some Geishas",
-    ],
-    highlightsHe: [
-      "בוקר: נסיעה לקיוטו ברכבת המהירה",
-      "צ׳ק-אין בריוקאן מסורתי",
-      "אחה״צ: מקדש פושימי אינארי (10,000 שערי טורי)",
-      "ערב: טיול ברובע גיון",
-      "אולי נראה גיישות",
+    highlights: [
+      { textEn: "Morning: Bullet train to Kyoto", textHe: "בוקר: נסיעה לקיוטו ברכבת המהירה", image: shinkansenTrainAnime },
+      { textEn: "Check-in at traditional Ryokan", textHe: "צ׳ק-אין בריוקאן מסורתי", image: ryokanAnime },
+      { textEn: "Afternoon: Fushimi Inari (10,000 torii gates)", textHe: "אחה״צ: מקדש פושימי אינארי (10,000 שערי טורי)", image: fushimiInariAnime },
+      { textEn: "Evening: Stroll through Gion district", textHe: "ערב: טיול ברובע גיון", image: gionGeishaAnime },
+      { textEn: "Maybe spot some Geishas", textHe: "אולי נראה גיישות", image: gionGeishaAnime },
     ],
     icon: <Camera className="w-5 h-5" />,
     moodEn: "Traditional",
@@ -193,19 +215,12 @@ const itinerary: DayPlan[] = [
     locationHe: "קיוטו",
     titleEn: "Temples & Gardens",
     titleHe: "מקדשים וגנים",
-    highlightsEn: [
-      "Morning: Kinkaku-ji (Golden Pavilion)",
-      "Arashiyama Bamboo Forest",
-      "Lunch: Kyoto-style Kaiseki",
-      "Afternoon: Nijo Castle",
-      "Evening: Private onsen experience",
-    ],
-    highlightsHe: [
-      "בוקר: קינקאקו-ג׳י (הביתן הזהוב)",
-      "יער הבמבוק בארשיאמה",
-      "צהריים: קייסקי בסגנון קיוטו",
-      "אחה״צ: טירת ניג׳ו",
-      "ערב: חוויית אונסן פרטית",
+    highlights: [
+      { textEn: "Morning: Kinkaku-ji (Golden Pavilion)", textHe: "בוקר: קינקאקו-ג׳י (הביתן הזהוב)", image: kinkakujiAnime },
+      { textEn: "Arashiyama Bamboo Forest", textHe: "יער הבמבוק בארשיאמה", image: bambooForestAnime },
+      { textEn: "Lunch: Kyoto-style Kaiseki", textHe: "צהריים: קייסקי בסגנון קיוטו", image: kaisekiAnime },
+      { textEn: "Afternoon: Nijo Castle", textHe: "אחה״צ: טירת ניג׳ו", image: nijoCastleAnime },
+      { textEn: "Evening: Private onsen experience", textHe: "ערב: חוויית אונסן פרטית", image: onsenAnime },
     ],
     icon: <TreePine className="w-5 h-5" />,
     moodEn: "Serenity",
@@ -223,19 +238,12 @@ const itinerary: DayPlan[] = [
     locationHe: "נארה ואוסקה",
     titleEn: "Day Trip to Nara",
     titleHe: "טיול יום לנארה",
-    highlightsEn: [
-      "Morning: Day trip to Nara",
-      "Feed the sacred deer at Nara Park",
-      "Visit Todai-ji Temple",
-      "Afternoon: Travel to Osaka",
-      "Evening: Dotonbori nightlife",
-    ],
-    highlightsHe: [
-      "בוקר: טיול יום לנארה",
-      "האכלת האיילים הקדושים בפארק נארה",
-      "ביקור במקדש טודאי-ג׳י",
-      "אחה״צ: נסיעה לאוסקה",
-      "ערב: חיי הלילה של דוטונבורי",
+    highlights: [
+      { textEn: "Morning: Day trip to Nara", textHe: "בוקר: טיול יום לנארה", image: naraAnime },
+      { textEn: "Feed the sacred deer at Nara Park", textHe: "האכלת האיילים הקדושים בפארק נארה", image: naraDeerParkAnime },
+      { textEn: "Visit Todai-ji Temple", textHe: "ביקור במקדש טודאי-ג׳י", image: todaijiTempleAnime },
+      { textEn: "Afternoon: Travel to Osaka", textHe: "אחה״צ: נסיעה לאוסקה", image: shinkansenTrainAnime },
+      { textEn: "Evening: Dotonbori nightlife", textHe: "ערב: חיי הלילה של דוטונבורי", image: dotonboriNightAnime },
     ],
     icon: <Sparkles className="w-5 h-5" />,
     moodEn: "Adventure",
@@ -253,21 +261,13 @@ const itinerary: DayPlan[] = [
     locationHe: "אוסקה",
     titleEn: "Osaka Food Tour",
     titleHe: "סיור אוכל באוסקה",
-    highlightsEn: [
-      "Morning: Osaka Castle",
-      "Kuromon Market - culinary tour",
-      "Best takoyaki and okonomiyaki",
-      "Afternoon: Shinsekai district",
-      "Last shopping in Shinsaibashi",
-      "Farewell dinner at upscale izakaya",
-    ],
-    highlightsHe: [
-      "בוקר: טירת אוסקה",
-      "שוק קורומון - סיור קולינרי",
-      "הטאקויאקי והאוקונומיאקי הטובים ביותר",
-      "אחה״צ: רובע שינסקאי",
-      "קניות אחרונות בשינסאיבאשי",
-      "ארוחת פרידה באיזקאיה יוקרתית",
+    highlights: [
+      { textEn: "Morning: Osaka Castle", textHe: "בוקר: טירת אוסקה", image: osakaCastleAnime },
+      { textEn: "Kuromon Market - culinary tour", textHe: "שוק קורומון - סיור קולינרי", image: kuromonMarketAnime },
+      { textEn: "Best takoyaki and okonomiyaki", textHe: "הטאקויאקי והאוקונומיאקי הטובים ביותר", image: takoyakiAnime },
+      { textEn: "Afternoon: Shinsekai district", textHe: "אחה״צ: רובע שינסקאי", image: shinsekaiAnime },
+      { textEn: "Last shopping in Shinsaibashi", textHe: "קניות אחרונות בשינסאיבאשי", image: shinsaibashiAnime },
+      { textEn: "Farewell dinner at upscale izakaya", textHe: "ארוחת פרידה באיזקאיה יוקרתית", image: izakayaAnime },
     ],
     icon: <UtensilsCrossed className="w-5 h-5" />,
     moodEn: "Foodie",
@@ -285,19 +285,12 @@ const itinerary: DayPlan[] = [
     locationHe: "אוסקה",
     titleEn: "Free Day in Osaka",
     titleHe: "יום חופשי באוסקה",
-    highlightsEn: [
-      "Morning: Universal Studios Japan (optional)",
-      "Or: Free exploration of Osaka",
-      "Visit Osaka Aquarium",
-      "Shopping in Namba",
-      "Last evening in Japan",
-    ],
-    highlightsHe: [
-      "בוקר: יוניברסל סטודיוז יפן (אופציונלי)",
-      "או: חקירה חופשית של אוסקה",
-      "ביקור באקווריום אוסקה",
-      "קניות בנאמבה",
-      "ערב אחרון ביפן",
+    highlights: [
+      { textEn: "Morning: Universal Studios Japan (optional)", textHe: "בוקר: יוניברסל סטודיוז יפן (אופציונלי)", image: universalStudiosAnime },
+      { textEn: "Or: Free exploration of Osaka", textHe: "או: חקירה חופשית של אוסקה", image: osakaAnime },
+      { textEn: "Visit Osaka Aquarium", textHe: "ביקור באקווריום אוסקה", image: aquariumAnime },
+      { textEn: "Shopping in Namba", textHe: "קניות בנאמבה", image: nambaShoppingAnime },
+      { textEn: "Last evening in Japan", textHe: "ערב אחרון ביפן", image: dotonboriNightAnime },
     ],
     icon: <Sparkles className="w-5 h-5" />,
     moodEn: "Freedom",
@@ -315,19 +308,12 @@ const itinerary: DayPlan[] = [
     locationHe: "יציאה",
     titleEn: "Goodbye Japan",
     titleHe: "להתראות יפן",
-    highlightsEn: [
-      "Last morning in Osaka",
-      "Travel to Kansai Airport",
-      "Last airport shopping",
-      "Flight back to Israel",
-      "Hearts full of memories ❤️",
-    ],
-    highlightsHe: [
-      "בוקר אחרון באוסקה",
-      "נסיעה לשדה התעופה קאנסאי",
-      "קניות אחרונות בשדה התעופה",
-      "טיסה חזרה לישראל",
-      "לבבות מלאים בזיכרונות ❤️",
+    highlights: [
+      { textEn: "Last morning in Osaka", textHe: "בוקר אחרון באוסקה", image: osakaAnime },
+      { textEn: "Travel to Kansai Airport", textHe: "נסיעה לשדה התעופה קאנסאי", image: kansaiAirportAnime },
+      { textEn: "Last airport shopping", textHe: "קניות אחרונות בשדה התעופה", image: airportShoppingAnime },
+      { textEn: "Flight back to Israel", textHe: "טיסה חזרה לישראל", image: flightHomeAnime },
+      { textEn: "Hearts full of memories ❤️", textHe: "לבבות מלאים בזיכרונות ❤️", image: memoriesHeartAnime },
     ],
     icon: <Heart className="w-5 h-5" />,
     moodEn: "Bittersweet",
@@ -336,6 +322,51 @@ const itinerary: DayPlan[] = [
     emoji: "✈️",
   },
 ];
+
+const HighlightWithImage = ({ 
+  highlight, 
+  index, 
+  dayIndex,
+  t 
+}: { 
+  highlight: HighlightItem; 
+  index: number; 
+  dayIndex: number;
+  t: (en: string, he: string) => string;
+}) => {
+  return (
+    <HoverCard openDelay={100} closeDelay={100}>
+      <HoverCardTrigger asChild>
+        <li 
+          className="text-sm text-muted-foreground flex items-start gap-2 opacity-0 animate-fade-up hover:text-foreground transition-colors duration-200 cursor-pointer"
+          style={{ animationDelay: `${(dayIndex * 100) + (index * 50)}ms`, animationFillMode: 'forwards' }}
+        >
+          <span className="text-gold mt-0.5 group-hover:animate-pulse">•</span>
+          <span className="hover:text-primary transition-colors border-b border-transparent hover:border-primary/30">
+            {t(highlight.textEn, highlight.textHe)}
+          </span>
+        </li>
+      </HoverCardTrigger>
+      <HoverCardContent 
+        className="w-64 p-0 overflow-hidden border-2 border-sakura/30 shadow-xl"
+        side="top"
+        sideOffset={8}
+      >
+        <div className="relative">
+          <img 
+            src={highlight.image} 
+            alt={t(highlight.textEn, highlight.textHe)}
+            className="w-full h-40 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+          <p className="absolute bottom-2 left-2 right-2 text-cream text-xs font-medium line-clamp-2">
+            {t(highlight.textEn, highlight.textHe)}
+          </p>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
+  );
+};
 
 const ItinerarySection = () => {
   const { t } = useLanguage();
@@ -351,7 +382,10 @@ const ItinerarySection = () => {
           </h2>
           <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-4 md:mb-6" />
           <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto px-2">
-            {t("February 11-20, 2026 • 10 magical days in Japan", "11-20 בפברואר 2026 • 10 ימים קסומים ביפן")}
+            {t("February 11-21, 2026 • 10 magical days in Japan", "11-21 בפברואר 2026 • 10 ימים קסומים ביפן")}
+          </p>
+          <p className="text-xs text-primary/60 mt-2">
+            {t("✨ Hover over activities to see anime illustrations", "✨ רחפו מעל הפעילויות לראות איורי אנימה")}
           </p>
         </div>
 
@@ -413,15 +447,14 @@ const ItinerarySection = () => {
                   </div>
 
                   <ul className="space-y-2">
-                    {(t(day.highlightsEn.join("|"), day.highlightsHe.join("|"))).split("|").map((highlight, i) => (
-                      <li 
-                        key={i} 
-                        className="text-sm text-muted-foreground flex items-start gap-2 opacity-0 animate-fade-up hover:text-foreground transition-colors duration-200"
-                        style={{ animationDelay: `${(idx * 100) + (i * 50)}ms`, animationFillMode: 'forwards' }}
-                      >
-                        <span className="text-gold mt-0.5 group-hover:animate-pulse">•</span>
-                        {highlight}
-                      </li>
+                    {day.highlights.map((highlight, i) => (
+                      <HighlightWithImage 
+                        key={i}
+                        highlight={highlight}
+                        index={i}
+                        dayIndex={idx}
+                        t={t}
+                      />
                     ))}
                   </ul>
                 </div>
