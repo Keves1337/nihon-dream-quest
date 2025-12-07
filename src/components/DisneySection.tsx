@@ -124,20 +124,6 @@ const DisneySection = () => {
               </ul>
             </Card>
 
-            <Card className="p-4 bg-gold/10 border-gold/30 hover:bg-gold/20 transition-colors duration-300">
-              <div className="flex items-start gap-3">
-                <Info className="w-5 h-5 text-gold flex-shrink-0 mt-0.5 animate-bounce" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{t("Booking Note", "הערה להזמנה")}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {t(
-                      "Disney hotels can only be booked 2 months in advance. Room available from April 1, 2026 – perfect for your dates!",
-                      "ניתן להזמין מלונות דיסני חודשיים מראש בלבד. החדר זמין מ-1 באפריל 2026 – מושלם לתאריכים שלכם!"
-                    )}
-                  </p>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </div>
