@@ -62,7 +62,7 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center gap-3 mb-4 animate-fade-up animation-delay-300">
           <span className="px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-primary font-medium border border-primary/20">
-            דובאי
+            ישראל
           </span>
           <span className="text-gold text-2xl animate-float">✈️</span>
           <span className="px-4 py-2 bg-sakura/30 backdrop-blur-sm rounded-full text-primary font-medium border border-sakura/30">
