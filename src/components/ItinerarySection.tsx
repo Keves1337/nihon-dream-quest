@@ -3,11 +3,15 @@ import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 
 import tokyoAnime from "@/assets/tokyo-shibuya-anime.png";
+import tokyoSensojiAnime from "@/assets/tokyo-sensoji-anime.png";
 import disneyAnime from "@/assets/disney-beauty-beast-anime.png";
+import disneyseaAnime from "@/assets/disneysea-anime.png";
 import kyotoAnime from "@/assets/kyoto-torii-anime.png";
+import kyotoBambooAnime from "@/assets/kyoto-bamboo-anime.png";
 import naraAnime from "@/assets/nara-deer-anime.png";
 import osakaAnime from "@/assets/osaka-dotonbori-anime.png";
-import ramenAnime from "@/assets/japan-ramen-anime.png";
+import osakaUniversalAnime from "@/assets/osaka-universal-anime.png";
+import departureAnime from "@/assets/japan-departure-anime.png";
 
 interface DayPlan {
   day: number;
@@ -24,7 +28,7 @@ interface DayPlan {
   icon: React.ReactNode;
   moodEn: string;
   moodHe: string;
-  image?: string;
+  image: string;
   emoji: string;
 }
 
@@ -86,7 +90,7 @@ const itinerary: DayPlan[] = [
     icon: <TreePine className="w-5 h-5" />,
     moodEn: "Culture",
     moodHe: "תרבות",
-    image: tokyoAnime,
+    image: tokyoSensojiAnime,
     emoji: "⛩️",
   },
   {
@@ -146,7 +150,7 @@ const itinerary: DayPlan[] = [
     icon: <Heart className="w-5 h-5" />,
     moodEn: "Romance",
     moodHe: "רומנטיקה",
-    image: disneyAnime,
+    image: disneyseaAnime,
     emoji: "💕",
   },
   {
@@ -206,7 +210,7 @@ const itinerary: DayPlan[] = [
     icon: <TreePine className="w-5 h-5" />,
     moodEn: "Serenity",
     moodHe: "שלווה",
-    image: kyotoAnime,
+    image: kyotoBambooAnime,
     emoji: "🎋",
   },
   {
@@ -298,7 +302,7 @@ const itinerary: DayPlan[] = [
     icon: <Sparkles className="w-5 h-5" />,
     moodEn: "Freedom",
     moodHe: "חופש",
-    image: osakaAnime,
+    image: osakaUniversalAnime,
     emoji: "🎡",
   },
   {
@@ -328,7 +332,7 @@ const itinerary: DayPlan[] = [
     icon: <Heart className="w-5 h-5" />,
     moodEn: "Bittersweet",
     moodHe: "מתוק-מר",
-    image: ramenAnime,
+    image: departureAnime,
     emoji: "✈️",
   },
 ];
@@ -386,32 +390,30 @@ const ItinerarySection = () => {
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 {/* Day image */}
-                {day.image && (
-                  <div className="h-40 overflow-hidden relative">
-                    <img 
-                      src={day.image} 
-                      alt={t(day.titleEn, day.titleHe)}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
-                    
-                    {/* Floating emoji on hover */}
-                    <div className="absolute top-3 left-3 text-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125 group-hover:rotate-12">
-                      {day.emoji}
-                    </div>
-                    
-                    {/* Mood badge on image */}
-                    <span className="absolute top-3 right-3 text-xs px-3 py-1 rounded-full bg-sakura/80 backdrop-blur-sm text-primary font-medium transition-all duration-300 group-hover:bg-gold/80">
-                      {t(day.moodEn, day.moodHe)}
-                    </span>
-                    
-                    {/* Sparkle effects */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <div className="absolute top-8 right-16 text-gold animate-pulse">✨</div>
-                      <div className="absolute bottom-16 left-8 text-sakura animate-pulse animation-delay-300">✨</div>
-                    </div>
+                <div className="h-40 overflow-hidden relative">
+                  <img 
+                    src={day.image} 
+                    alt={t(day.titleEn, day.titleHe)}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                  
+                  {/* Floating emoji on hover */}
+                  <div className="absolute top-3 left-3 text-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125 group-hover:rotate-12">
+                    {day.emoji}
                   </div>
-                )}
+                  
+                  {/* Mood badge on image */}
+                  <span className="absolute top-3 right-3 text-xs px-3 py-1 rounded-full bg-sakura/80 backdrop-blur-sm text-primary font-medium transition-all duration-300 group-hover:bg-gold/80">
+                    {t(day.moodEn, day.moodHe)}
+                  </span>
+                  
+                  {/* Sparkle effects */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute top-8 right-16 text-gold animate-pulse">✨</div>
+                    <div className="absolute bottom-16 left-8 text-sakura animate-pulse animation-delay-300">✨</div>
+                  </div>
+                </div>
 
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
