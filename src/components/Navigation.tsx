@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Map, DollarSign } from "lucide-react";
+import { Map, DollarSign, Moon, Sun } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useTheme } from "@/hooks/useTheme";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,13 +55,26 @@ const Navigation = () => {
           </button>
         </div>
 
-        {/* Language Toggle */}
-        <button
-          onClick={toggleLanguage}
-          className="px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
-        >
-          {language === "en" ? "עב" : "EN"}
-        </button>
+        {/* Theme & Language Toggle */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 md:p-2 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            ) : (
+              <Moon className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            )}
+          </button>
+          <button
+            onClick={toggleLanguage}
+            className="px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
+          >
+            {language === "en" ? "עב" : "EN"}
+          </button>
+        </div>
       </div>
     </nav>
   );

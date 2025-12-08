@@ -1,9 +1,14 @@
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-sakura-shrine.png";
+import heroImageDay from "@/assets/hero-sakura-shrine.png";
+import heroImageNight from "@/assets/hero-sakura-shrine-night.png";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useTheme } from "@/hooks/useTheme";
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const { isDark } = useTheme();
+
+  const heroImage = isDark ? heroImageNight : heroImageDay;
 
   const scrollToContent = () => {
     document.getElementById("itinerary")?.scrollIntoView({ behavior: "smooth" });
@@ -11,17 +16,12 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div 
-        className="absolute inset-0 z-0 bg-no-repeat"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}
-      />
-      {/* Mobile-optimized background that shows the couple */}
+      {/* Background image - single responsive div */}
       <style>{`
+        .hero-bg {
+          background-size: cover;
+          background-position: center;
+        }
         @media (max-width: 768px) {
           .hero-bg {
             background-size: 140% auto !important;
@@ -30,34 +30,29 @@ const HeroSection = () => {
         }
       `}</style>
       <div 
-        className="hero-bg absolute inset-0 z-0 bg-no-repeat md:hidden"
+        className="hero-bg absolute inset-0 z-0 bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
-          backgroundSize: '140% auto',
-          backgroundPosition: 'center 20%',
-        }}
-      />
-      <div 
-        className="hidden md:block absolute inset-0 z-0 bg-no-repeat"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
       />
       
-      {/* Overlay gradient */}
+      {/* Overlay gradient - theme aware */}
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 transition-colors duration-500"
         style={{
-          background: `
-            linear-gradient(180deg, 
-              hsl(350 60% 92% / 0.7) 0%, 
-              hsl(350 50% 88% / 0.6) 30%,
-              hsl(30 50% 95% / 0.5) 70%,
-              hsl(30 50% 98% / 0.8) 100%
-            )
-          `,
+          background: isDark 
+            ? `linear-gradient(180deg, 
+                hsl(230 40% 15% / 0.7) 0%, 
+                hsl(230 30% 20% / 0.6) 30%,
+                hsl(250 30% 15% / 0.5) 70%,
+                hsl(250 30% 10% / 0.8) 100%
+              )`
+            : `linear-gradient(180deg, 
+                hsl(350 60% 92% / 0.7) 0%, 
+                hsl(350 50% 88% / 0.6) 30%,
+                hsl(30 50% 95% / 0.5) 70%,
+                hsl(30 50% 98% / 0.8) 100%
+              )`,
         }}
       />
 
