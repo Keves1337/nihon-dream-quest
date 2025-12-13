@@ -66,7 +66,7 @@ const HeroSection = () => {
         <span className="text-primary/40 font-display text-xs md:text-sm tracking-widest uppercase mb-4 md:mb-6 block animate-fade-up">桜</span>
 
         <h1 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-8xl text-foreground mb-3 md:mb-4 animate-fade-up animation-delay-100 drop-shadow-lg">
-          Amit & Jonathan
+          Amit & Johnatan
         </h1>
         
         <p className="font-display text-base sm:text-lg md:text-2xl text-primary italic mb-4 md:mb-6 animate-fade-up animation-delay-200">
