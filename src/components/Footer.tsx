@@ -11,7 +11,7 @@ const Footer = () => {
         <span className="text-sakura text-lg md:text-xl mb-4 md:mb-6 block font-bold">愛</span>
 
         <h3 className="font-display text-2xl md:text-3xl mb-2 text-cream">
-          Amit & Jonathan
+          Amit & Johnatan
         </h3>
         <p className="text-sm md:text-base text-cream/80 mb-3 md:mb-4 font-display italic">
           {t("Honeymoon in Japan • February 2026", "ירח דבש ביפן • פברואר 2026")}
