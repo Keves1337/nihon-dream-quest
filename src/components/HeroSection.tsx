@@ -90,7 +90,7 @@ const HeroSection = () => {
           </p>
         </div>
 
-        <p className="text-sm sm:text-base md:text-xl text-foreground max-w-2xl mx-auto mb-8 md:mb-12 animate-fade-up animation-delay-500 px-2 font-medium [text-shadow:_0_1px_12px_rgb(255_255_255_/_90%),_0_0_20px_rgb(255_255_255_/_80%)]">
+        <p className="text-sm sm:text-base md:text-xl text-foreground max-w-2xl mx-auto mb-8 md:mb-12 animate-fade-up animation-delay-500 px-2 font-medium">
           {t("10 magical days in the Land of the Rising Sun", "10 ימים קסומים בארץ השמש העולה")}
         </p>
 
